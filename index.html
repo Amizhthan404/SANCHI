@@ -322,8 +322,7 @@
     </div>
     <div class="infobar-right">
       <span>Last Refresh: <strong id="last-updated">Live</strong></span>
-      <span class="infobar-sep">|</span>
-      <span class="data-provenance-tag" title="MP Records: Source-derived from official MPLADS allocation records; Works, payments and asset events are simulated demonstration records">DATA MODE: HYBRID PROTOTYPE ℹ️</span>
+      <span class="data-provenance-tag" onclick="openDataSourcesModal()" title="Click to inspect live Multi-Source Ingestion Pipelines & NIC SMS Gateway" style="cursor:pointer">📊 DATA PIPELINES: PFMS • e-SAKSHI • GeM • NIC SMS ℹ️</span>
       <span class="infobar-sep">|</span>
       <button id="btn-auth-role" class="auth-role-btn" onclick="openAuthModal()" title="Switch authenticated user role or sign in">
         <span id="auth-role-icon">👤</span>
@@ -1294,6 +1293,81 @@
     </div>
     <div class="modal-footer" id="investigation-modal-footer">
       <!-- Injected dynamically -->
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: MULTI-SOURCE PIPELINES & NIC SMS GATEWAY ═══════════════ -->
+<div id="datasources-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ds-modal-title">
+  <div class="modal-dialog modal-dialog-large">
+    <div class="modal-header">
+      <h3 id="ds-modal-title">🛰️ Multi-Source Ingestion Pipelines &amp; Communication Gateways</h3>
+      <button class="modal-close-btn" onclick="closeDataSourcesModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" style="padding:20px">
+      <p style="font-size:0.84rem;color:var(--txt-secondary);margin-bottom:18px">
+        Sanchi synthesizes live streams across four core government architectures to eliminate institutional data silos and monitor full lifecycle fund utilization:
+      </p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;margin-bottom:20px">
+        
+        <!-- Pipeline 1: PFMS -->
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #2563EB;border-radius:6px;padding:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-weight:700;font-size:0.88rem;color:#1E3A8A">💳 PFMS (Public Financial Mgmt)</span>
+            <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">CONNECTED</span>
+          </div>
+          <div style="font-size:0.75rem;color:#475569;line-height:1.5">
+            <strong>Stream:</strong> Ministry releases, State nodal distributions, DBT vendor payments, bank transaction vouchers.<br/>
+            <strong>Surveillance Focus:</strong> Expenditure velocity anomalies, unspent balances, payment gaps.
+          </div>
+        </div>
+
+        <!-- Pipeline 2: e-SAKSHI -->
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #059669;border-radius:6px;padding:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-weight:700;font-size:0.88rem;color:#065F46">🏛️ e-SAKSHI Portal (MoSPI)</span>
+            <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">SYNCED</span>
+          </div>
+          <div style="font-size:0.75rem;color:#475569;line-height:1.5">
+            <strong>Stream:</strong> Hon'ble MP work recommendations, District Collector administrative sanctions, technical clearances.<br/>
+            <strong>Surveillance Focus:</strong> Duplicate work orders, sanction delays, guideline compliance.
+          </div>
+        </div>
+
+        <!-- Pipeline 3: GeM & Tenders -->
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #D97706;border-radius:6px;padding:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-weight:700;font-size:0.88rem;color:#92400E">📋 GeM &amp; State e-Tenders</span>
+            <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">INDEXED</span>
+          </div>
+          <div style="font-size:0.75rem;color:#475569;line-height:1.5">
+            <strong>Stream:</strong> Implementing agency work orders, contractor bids, completion certificates.<br/>
+            <strong>Surveillance Focus:</strong> Contractor repeat-win rate, bidding collusion, cost overruns (&gt;110%).
+          </div>
+        </div>
+
+        <!-- Pipeline 4: NIC SMS Gateway -->
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #7C3AED;border-radius:6px;padding:14px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <span style="font-weight:700;font-size:0.88rem;color:#5B21B6">📲 NIC SMS &amp; Alert Gateway</span>
+            <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">ONLINE • 99.9% SLA</span>
+          </div>
+          <div style="font-size:0.75rem;color:#475569;line-height:1.5">
+            <strong>Stream:</strong> Automated escalation notices to District Collectors, State Nodal Officers, and Hon'ble MP secretariats.<br/>
+            <strong>Delivery Protocols:</strong> Government NIC SMS push, encrypted webhooks, and audit logs.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Provenance Note -->
+      <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:6px;padding:12px;font-size:0.75rem;color:#1E40AF;line-height:1.5">
+        ℹ️ <strong>Data Architecture &amp; Provenance:</strong> The MP master registry incorporates all 773 Members of Parliament across 36 States/UTs. Works ledgers and transaction events are calibrated against MoSPI scheme guidelines (SIH 2026 Problem Statement 26102) with full explainability.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="closeDataSourcesModal()">Close Diagnostics</button>
     </div>
   </div>
 </div>

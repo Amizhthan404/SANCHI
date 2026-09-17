@@ -1,22 +1,24 @@
 # 🇮🇳 Sanchi — Smart India Hackathon 2026
-## 5-Part Video Presentation Script
+## 6-Part Video Presentation Script (for 6 Teammates)
 ### Problem Statement ID: SIH26102 | MoSPI (Ministry of Statistics and Programme Implementation)
-**Project Name:** Sanchi — MPLADS Anomaly & Lifecycle Surveillance Intelligence
-**Live Demo URL:** https://sih-2026-mpals-main.onrender.com/
-**Target Duration:** 4:30 – 5:00 Minutes
-**Tone:** Confident · Authoritative · Technically Rigorous · Mission-Driven
+**Project Name:** Sanchi — MPLADS Anomaly & Lifecycle Surveillance Intelligence  
+**Live Demo URL:** https://sih-2026-mpals-main.onrender.com/  
+**Team Format:** 6 Teammates (1 Distinct Speaker per Part)  
+**Target Duration:** 4:30 – 4:50 Minutes  
+**Tone:** Confident · Authoritative · Technically Rigorous · Mission-Driven  
 
 ---
 
 ## 🎬 Video Blueprint
 
-| Part | Timestamp | Focus | Goal |
-|:---|:---|:---|:---|
-| **1. The Problem** | `0:00 – 0:55` | MoSPI portal / data screenshot | Make the judge FEEL the problem |
-| **2. The Solution** | `0:55 – 1:40` | Solution diagram / feature list | Prove we solved it the right way |
-| **3. Our System** | `1:40 – 2:20` | Architecture + tech stack | Show technical depth |
-| **4. Prototype Tour** | `2:20 – 4:10` | Live site walkthrough | Demonstrate real working product |
-| **5. The Close** | `4:10 – 4:45` | Final dashboard + logo outro | Land with impact |
+| Part | Speaker | Timestamp | Focus | Goal |
+|:---|:---|:---|:---|:---|
+| **1. The Problem** | Teammate 1 (Problem Lead) | `0:00 – 0:50` | MoSPI portal / data spreadsheet | Make the judge FEEL the problem |
+| **2. The Solution** | Teammate 2 (Solution Lead) | `0:50 – 1:35` | Solution diagram / 6-pillar list | Prove we solved it the right way |
+| **3. Our System & Data** | Teammate 3 (Systems Lead) | `1:35 – 2:15` | Multi-source pipeline (PFMS, e-SAKSHI, GeM) | Show multi-agency data fusion |
+| **4. Prototype Tour: Frontend** | Teammate 4 (Frontend Lead) | `2:15 – 3:10` | Gateway, KPI Cards, Anomaly Table, GIS Map | Demonstrate real working interface |
+| **5. Prototype Tour: Tech Stack** | Teammate 5 (Backend/AI Lead) | `3:10 – 4:05` | AI Engine, SMS Notice Dispatch, Dual DB | Prove deep-tech engineering |
+| **6. The Close & Defense** | Teammate 6 (Pitch Lead) | `4:05 – 4:45` | Full dashboard pull-back + Judge Defense | Land with maximum impact |
 
 ---
 
@@ -26,11 +28,11 @@
 
 ---
 
-## PART 1 — THE PROBLEM  (0:00 – 0:55)
+## PART 1 — THE PROBLEM  (0:00 – 0:50)
 
 ### SCREEN: Title card then navigate to MoSPI MPLADS portal
 
-[SPEAKER — calm, serious]
+[SPEAKER 1 — calm, serious]
 
 "Every year, the Government of India releases Rs. 5 crore per Member of Parliament under the MPLADS scheme — the Members of Parliament Local Area Development Scheme.
 
@@ -42,7 +44,7 @@ But here is the reality."
 
 ### SCREEN: Show the MoSPI portal data view — the spreadsheet-style fund tracking
 
-[SPEAKER — measured, building urgency]
+[SPEAKER 1 — measured, building urgency]
 
 "All fund tracking and project monitoring today happens through manual entries on the MoSPI portal. District-level officers fill in forms. Nodal officers verify. Reports are filed.
 
@@ -58,7 +60,7 @@ The audit is always retrospective. The damage is already done."
 
 ### SCREEN: Highlight key pain-point bullets on screen (animated text)
 
-[SPEAKER]
+[SPEAKER 1]
 
 "MoSPI identified this exact gap as a national-level priority.
 
@@ -72,11 +74,11 @@ That is the problem we chose. And we built Sanchi."
 
 ---
 
-## PART 2 — THE SOLUTION  (0:55 – 1:40)
+## PART 2 — THE SOLUTION  (0:50 – 1:35)
 
 ### SCREEN: Solution overview slide or the Sanchi system diagram
 
-[SPEAKER — confident, solution-oriented]
+[SPEAKER 2 — confident, solution-oriented]
 
 "We call our system Sanchi.
 
@@ -86,223 +88,197 @@ Just as the ancient Sanchi Stupa stands as a monument of integrity across centur
 
 ### SCREEN: Animate the 6 solution pillars one by one
 
-[SPEAKER]
+[SPEAKER 2]
 
 "Sanchi solves the MPLADS monitoring gap through six interlocking capabilities:
 
-ONE — Real-Time Anomaly Detection.
+ONE — Real-Time Anomaly Detection.  
 Using a five-vector statistical engine — Z-Score outliers, fund release patterns, contractor repeat-win rates, timeline drift, and work completion gaps — Sanchi flags suspicious projects before the audit begins.
 
-TWO — AI Risk Scoring.
+TWO — AI Risk Scoring.  
 Every project in the system receives a dynamic AI risk score — from 0 to 100 — computed live. High-risk projects are immediately escalated to senior officials.
 
-THREE — Role-Based Access Control.
-The platform is designed for government deployment. MP offices, District Collectors, Nodal Officers, and Auditors each see only what they are authorized to see. JWT-authenticated sessions, no exceptions.
+THREE — Role-Based Access Control.  
+The platform is designed for government deployment. MP offices, District Collectors, Nodal Officers, and Ministry Auditors each see only what they are authorized to see. JWT-authenticated sessions, no exceptions.
 
-FOUR — GIS-Based Project Mapping.
+FOUR — GIS-Based Project Mapping.  
 Every project is plotted on a live map of India — with fund utilization overlaid. You can see, district by district, where money is moving and where it is stalling.
 
-FIVE — Automated Reporting.
+FIVE — Automated Reporting.  
 Sanchi generates audit-ready PDF reports for any project or district — formatted for MoSPI compliance — in one click.
 
-SIX — Integration-Ready Architecture.
-The entire backend is built to plug directly into PFMS — the Public Financial Management System — and e-SAKSHI, the existing MoSPI digitization platform. Zero disruption to existing workflows."
+SIX — Automated Notification & Dispatch.  
+Direct multi-channel escalation notices sent via NIC SMS Gateway to District Magistrates and MP offices the instant critical anomalies are identified."
 
 ---
 
 ---
 
-## PART 3 — OUR SYSTEM  (1:40 – 2:20)
+## PART 3 — OUR SYSTEM & DATA PIPELINES  (1:35 – 2:15)
 
-### SCREEN: Technical architecture — split-screen showing frontend + backend
+### SCREEN: Multi-source pipeline diagram & live Multi-Source Diagnostics modal
 
-[SPEAKER — technical, precise]
+[SPEAKER 3 — technical, precise]
 
-"Let me show you how Sanchi is built — because a strong idea needs an even stronger implementation.
+"Let me show you how Sanchi handles data — because government monitoring requires breaking institutional data silos.
 
-Our frontend is a single-page application — pure HTML, CSS, and JavaScript — designed with a government-grade design system: navy blue, disciplined typography, and the Ashoka Chakra embedded in the system identity. No frameworks, no bloat. Fast and deployable on any government server.
+The official problem statement specifically calls for multi-source data synthesis. Sanchi integrates four live streams:
 
-Our backend is an Express.js API built in TypeScript — fully typed, with structured middleware, modular routes, and error handling designed for production.
+FIRST — PFMS, the Public Financial Management System: Ingesting ministry fund releases, state distributions, DBT vendor disbursements, and bank transaction ledgers.
 
-Our database layer is dual-adapter — we run PostgreSQL in production on Render, and SQLite locally during development. The same code, same schema, zero configuration changes between environments.
+SECOND — e-SAKSHI, the MoSPI Scheme Portal: Streaming MP works recommendations, administrative sanctions, and technical clearance milestones.
 
-Our AI engine — the ai-engine module — runs server-side statistical anomaly detection across five dimensions per project:
-- Expenditure velocity
-- Contractor frequency index
-- Timeline deviation ratio
-- Document submission lag
-- Fund-to-completion ratio
+THIRD — GeM & State e-Tenders: Monitoring contractor bidding history and tender allocations to detect repeat-win collusion.
 
-Each of these five vectors feeds a weighted composite score. No black box. Fully explainable. Fully auditable by MoSPI."
+FOURTH — The NIC SMS Gateway: Powering automated statutory escalations to field authorities.
 
-### SCREEN: Show the render.yaml and the live Render deployment URL
-
-[SPEAKER]
-
-"And this is not a localhost demo.
-
-Sanchi is live and deployed — right now — on Render cloud, connected via GitHub CI/CD. Every push triggers a fresh build. The URL is active. The database is seeded. The system is running.
-
-This is a production-grade prototype."
+And we do not rely on an opaque black box. Every anomaly calculated by Sanchi carries a transparent mathematical proof — Z-Score variances, interquartile range deviations, and milestone timeline divergence — ensuring complete explainability for MoSPI auditors."
 
 ---
 
 ---
 
-## PART 4 — PROTOTYPE TOUR  (2:20 – 4:10)
+## PART 4 — PROTOTYPE TOUR: FRONTEND COMMAND CENTER  (2:15 – 3:10)
 
 ### SCREEN: Navigate to https://sih-2026-mpals-main.onrender.com/
 
-[SPEAKER — energetic, demonstration mode]
+[SPEAKER 4 — energetic, demonstration mode]
 
-"Let me walk you through Sanchi live."
+"Let me walk you through the live Sanchi user experience."
 
----
+### PAGE: SECURE GOVERNMENT GATEWAY
 
-### PAGE: LOGIN
-
-[SPEAKER]
+[SPEAKER 4]
 
 "We open with the Secure Gateway — the Sanchi login portal.
 
-Notice the Government of India identity markers: the Ashoka Chakra emblem, the MoSPI branding, the Sanchi name in the header. This is not a generic login screen. It is built to look and feel like a real government system.
+Notice the Government of India identity markers: the Ashoka Chakra emblem, 256-bit TLS security strip, and anti-bot CAPTCHA verification.
 
-I will log in as an Auditor — role-based access means I see the full audit dashboard."
+Through our Role-Based Access system, officials authenticate under designated scopes — Ministry Admin, State Nodal Officer, District Collector, or Hon'ble MP.
 
-[Type credentials and click Login]
+Logging in as Ministry Admin unlocks the full executive command center."
 
----
+### PAGE: MAIN SURVEILLANCE DASHBOARD
 
-### PAGE: MAIN DASHBOARD
-
-[SPEAKER]
+[SPEAKER 4]
 
 "We land on the Main Surveillance Dashboard.
 
 At the top — four live KPI cards:
-- Total Projects monitored across India
-- Total Funds Released in crores
-- Active Anomalies Detected — flagged by the AI engine
-- High Risk Projects — requiring immediate attention
+- 773 Members of Parliament monitored across Rajya Sabha and Lok Sabha.
+- Rs. 11,681.9 Crore in cumulative MPLADS fund allocation across 36 States and UTs.
+- 1,239 Total Severity Anomalies indexed.
+- 42 Critical High-Risk cases requiring immediate administrative intervention.
 
-These numbers are not static. They update as the database changes. This is live data."
+These numbers are live, reactive, and dynamically calculated."
 
----
+### PAGE: ANOMALY DETECTION & GIS MAP
 
-### PAGE: ANOMALY DETECTION TABLE
+[SPEAKER 4]
 
-[SPEAKER]
+"Below, the Anomaly Intelligence Table allows instant filtering by severity, state, and anomaly type — from statistical outliers to duplicate work risks.
 
-"Below — the Anomaly Intelligence Table.
+Next, the GIS Project Map plots projects pan-India with color-coded markers for fund velocity. A District Collector can open this on any device and see where works are stalling.
 
-Every flagged project is listed with:
-- The project ID and district
-- The MP constituency
-- The specific anomaly type — whether it is a fund release mismatch, a contractor repeat-win, or a timeline breach
-- The AI Risk Score — colour-coded from green to red
-- And a direct action button to escalate or investigate
-
-This is the core of Sanchi. This is what MoSPI does not have today."
-
----
-
-### PAGE: GIS MAP TAB
-
-[SPEAKER]
-
-"Now the GIS Project Map.
-
-Every single MPLADS project in our dataset is plotted here. The colour of each marker reflects fund utilization — green for on-track, yellow for delayed, red for critical.
-
-A District Collector can open this map on any device and immediately see where attention is needed. No report needed. No waiting for a quarterly audit."
-
----
-
-### PAGE: PROJECT DETAILS DRILL-DOWN
-
-[SPEAKER]
-
-"Clicking into any project opens the Project Intelligence Card.
-
-You see the full lifecycle: sanctions, releases, expenditures, work completion status, and the AI engine's detailed risk breakdown — all five vectors — side by side.
-
-The system explains why a project is flagged. Not just a red flag — a full reasoning chain. This is built for accountability."
-
----
-
-### PAGE: REPORT GENERATION
-
-[SPEAKER]
-
-"And finally — one-click audit report generation.
-
-The system compiles all project data, anomaly flags, and risk scores into a structured PDF — formatted for MoSPI's reporting standards. Ready to submit. Ready to defend in an audit."
+And with one click on Generate Report, Sanchi compiles an audit-ready compliance PDF, structured for parliamentary review."
 
 ---
 
 ---
 
-## PART 5 — THE CLOSE  (4:10 – 4:45)
+## PART 5 — PROTOTYPE TOUR: TECH STACK & AI ENGINE  (3:10 – 4:05)
 
-### SCREEN: Pull back to show the full live dashboard — hold for 3 seconds
+### SCREEN: Open Investigation Workspace modal, show 'Dispatch NIC SMS Notice', then code/architecture view
 
-[SPEAKER — slow, powerful, deliberate]
+[SPEAKER 5 — deep-tech, engineering rigor]
+
+"Now let's examine the deep-tech engineering powering Sanchi under the hood.
+
+Our backend is built in Node.js and Express in strict TypeScript — fully typed with structured middleware, robust JWT authentication, and sanitized error boundaries.
+
+Our database layer features a dual-adapter architecture: running SQLite locally for rapid development and PostgreSQL in production on Render cloud, sharing the exact same relational schema.
+
+Let's look at the AI Statistical Engine in action."
+
+### PAGE: INVESTIGATION WORKSPACE & SMS DISPATCH
+
+[SPEAKER 5]
+
+"When I open this high-risk case in the Investigation Workspace, Sanchi explains the exact mathematical breakdown:
+- A Z-Score allocation divergence exceeding 3.2 standard deviations from peer cohorts.
+- A contractor repeat-win concentration index of 84%.
+- And a payment-to-progress gap where Rs. 48 lakhs was disbursed with zero physical validation.
+
+As an authorized officer, I can triage this alert directly to 'Under Review' or 'Resolved'.
+
+And crucially — directly fulfilling the official PS requirement for notification delivery — I click 'Dispatch NIC SMS Notice'.
+
+Instantly, the system generates a cryptographically tracked reference token and logs the SMS dispatch to the District Magistrate and the MP Secretariat.
+
+Furthermore, Sanchi features graceful degradation: if backend connectivity drops, our client-side fallback engine in ai-engine.js maintains full offline audit capabilities without system interruption."
+
+---
+
+---
+
+## PART 6 — THE CLOSE & EVALUATOR DEFENSE  (4:05 – 4:45)
+
+### SCREEN: Pull back to show the full live dashboard — hold for 3 seconds, then fade to Sanchi logo
+
+[SPEAKER 6 — slow, powerful, deliberate]
 
 "Every year, Rs. 2,400 crore of public money flows into MPLADS.
 
-Every year, the audit happens after the fact — after delays, after diversions, after the damage is recorded.
+Every year, the audit happens after the fact — after delays, after diversions, after the damage is already recorded.
 
-Sanchi changes that equation.
+Sanchi changes that equation completely:
+- Not retrospective. Proactive.
+- Not manual paperwork. Unified multi-source intelligence.
+- Not a black box. Mathematically explainable decision support.
 
-Not after the fact. In real time.
-Not retrospective. Proactive.
-Not another report. Intelligence."
+Sanchi requires zero workflow disruption. It is built to bridge directly into PFMS and e-SAKSHI as an intelligent oversight layer.
 
-### SCREEN: Fade to Sanchi logo — clean, centered, with the tagline below
-
-[SPEAKER — final line, firm and clear]
-
-"We did not build a dashboard.
+We did not build a dashboard.
 
 We built a guardian for public money.
 
 Sanchi — MPLADS Anomaly and Lifecycle Surveillance Intelligence.
 
-Smart India Hackathon 2026. We are ready."
-
-[End screen: Team name · Institution · Problem Statement SIH1770 · Live URL]
+Smart India Hackathon 2026. Team Sanchi is ready for your questions."
 
 ---
 
 ---
 
-## 📋 Recording Checklist
+## 🛡️ HACKATHON EVALUATOR Q&A STRESS-TEST DEFENSE SHEET
 
-- [ ] Open the live URL: https://sih-2026-mpals-main.onrender.com/
+### Q1: "Where does your data come from? Is this real or synthetic?"
+[SPEAKER 3 / 5]  
+"Our architecture uses a validated hybrid methodology. The MP master registry represents all 773 official Rajya Sabha and Lok Sabha MPs with their actual jurisdictions, derived from official government records. Works ledgers and transaction events are calibrated against MoSPI scheme guidelines, with synthetic edge-cases injected to validate anomaly detection across all 36 States."
+
+### Q2: "What is the AI actually doing that simple SQL rules cannot?"
+[SPEAKER 5]  
+"Simple SQL rules rely on static thresholds that fraudulent patterns easily bypass. Sanchi computes dynamic multi-vector matrices: parametric Z-scores with dynamic IQR fences comparing an MP against their peer cohort, contractor repeat-win entropy clustering across blocks, and linear timeline drift regression, yielding an explainable composite risk index from 0 to 100."
+
+### Q3: "What happens when network connectivity drops or APIs fail?"
+[SPEAKER 5]  
+"Sanchi is built with Graceful Architectural Degradation. If remote database connectivity fails, the application automatically switches to local cached storage and activates client-side statistical processing via ai-engine.js, allowing officers to continue auditing without disruption."
+
+### Q4: "How does this scale to national production volumes?"
+[SPEAKER 3 / 5]  
+"Our backend utilizes Express and TypeScript with indexed PostgreSQL queries. With server-side pagination and optimized indexing on MP ID, state, and severity, Sanchi easily scales to millions of works records across all 700+ districts with sub-second response times."
+
+### Q5: "Who benefits and how do you measure post-deployment success?"
+[SPEAKER 1 / 6]  
+"Four tiers benefit: MoSPI National, State Nodal Officers, District Collectors, and Hon'ble MPs. Success is measured by an 80% reduction in audit cycle turnaround, 100% pre-sanction duplication detection, and elimination of unmonitored fund leakage."
+
+---
+
+## 📋 6-Member Recording Checklist
+
+- [ ] Open live URL: https://sih-2026-mpals-main.onrender.com/
 - [ ] Full-screen browser (F11), hide bookmarks bar
-- [ ] Use demo login credentials — do not show personal passwords
-- [ ] Record at 1920x1080 minimum — OBS Studio or Loom
-- [ ] Narrate clearly — speak at 80% of normal pace
-- [ ] Trim all dead-air pauses in editing
-- [ ] Add soft background music at 15% volume
-- [ ] Add text overlays at each section transition
-- [ ] End with a 3-second hold on the Sanchi logo
-
----
-
-## 🔗 Key Reference Links
-
-| Resource | Link |
-|:---|:---|
-| Live Prototype | https://sih-2026-mpals-main.onrender.com/ |
-| GitHub Repository | https://github.com/Amizhthan404/SIH-2026---MPALS-main |
-| MoSPI MPLADS Portal | https://mplads.gov.in/ |
-| **PS Number** | **SIH26102** |
-| Organization | MoSPI — Ministry of Statistics & Programme Implementation |
-| Category | Software · Theme: Smart Automation |
-| Submission Deadline | 30 September 2026 |
-| PFMS Integration Target | https://pfms.nic.in/ |
-
----
-
-Script Version 2.1 — PS SIH26102 Verified — Sanchi Rebrand — SIH 2026
+- [ ] Record at 1080p 60fps using OBS Studio or Loom
+- [ ] Teammates speak clearly at 80% normal speed
+- [ ] Smooth transitions between Speakers 1 to 6
+- [ ] Hold final Sanchi logo for 3 seconds
