@@ -12,7 +12,6 @@
 | 🌐 **Live Web Application** | `[INSERT_LIVE_DEMO_LINK_HERE]` | Deployed full-stack cloud instance with live REST API & interactive UI |
 | 🎥 **YouTube Video Walkthrough** | `[INSERT_YOUTUBE_VIDEO_LINK_HERE]` | 3–5 min video demonstration showcasing RBAC, anomaly engine & case triage |
 | 📑 **Presentation Slide Deck** | `[INSERT_PPT_LINK_HERE]` | Official Hackathon Slide Deck (PPTX / PDF) |
-| 🎙️ **Team VO & Presentation Guide** | [`docs/SANCHI_TEAM_VO_HANDOVER.pdf`](docs/SANCHI_TEAM_VO_HANDOVER.pdf) | Member-wise speaker script, transition timestamps, and demonstration checklist |
 | 🏛️ **Nodal Ministry** | **MoSPI (Govt of India)** | Ministry of Statistics and Programme Implementation |
 | 🎯 **Problem Statement** | **PS ID: 26102** | Automated detection of expenditure irregularities, milestone divergence & ghost assets in MPLADS |
 
@@ -105,8 +104,8 @@ The database is initialized with verified, real-world parliamentary baselines:
 ### 1. Installation
 Clone the repository and install server dependencies:
 ```bash
-git clone https://github.com/HariVerse-sudo/SIH-2026---MPALS.git
-cd SIH-2026---MPALS
+git clone https://github.com/Amizhthan404/SANCHI.git
+cd SANCHI
 npm run setup
 ```
 *(The root `setup` script installs server dependencies and automatically migrates & seeds the SQLite database).*
@@ -155,10 +154,6 @@ SIH-2026---Sanchi/
 │   ├── charts.js                # Dual-axis timeline & donut visualization engine
 │   ├── data.js                  # REST API client with JWT session persistence
 │   └── map.js                   # Pan-India choropleth heatmap & Leaflet marker engine
-│
-├── docs/                        # Presentation & Handover Documentation
-│   ├── SANCHI_TEAM_VO_HANDOVER.pdf    # Team presentation guide (printable PDF)
-│   └── SANCHI_TEAM_VO_HANDOVER.html   # Mobile-friendly HTML version of script
 │
 ├── scripts/
 │   └── enrich_dataset.py        # Offline synthetic works generator (847 works, 36 States/UTs)
