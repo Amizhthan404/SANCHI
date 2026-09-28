@@ -37,11 +37,14 @@ const STATE_DISTRICTS: Record<string, string[]> = {
   'West Bengal': ['Kolkata', 'Howrah', 'Siliguri', 'Durgapur', 'Asansol', 'Darjeeling'],
   'Delhi': ['New Delhi', 'Central Delhi', 'South Delhi', 'North Delhi', 'East Delhi'],
   'Jammu & Kashmir': ['Srinagar', 'Jammu', 'Anantnag', 'Baramulla', 'Udhampur'],
+  'Jammu And Kashmir': ['Srinagar', 'Jammu', 'Anantnag', 'Baramulla', 'Udhampur'],
   'Ladakh': ['Leh', 'Kargil'],
   'Puducherry': ['Puducherry', 'Karaikal', 'Mahe', 'Yanam'],
   'Chandigarh': ['Chandigarh Urban', 'Chandigarh Rural'],
   'Andaman & Nicobar': ['Port Blair (South Andaman)', 'North & Middle Andaman', 'Nicobar'],
+  'Andaman And Nicobar Islands': ['Port Blair (South Andaman)', 'North & Middle Andaman', 'Nicobar'],
   'Dadra & Nagar Haveli and Daman & Diu': ['Daman', 'Diu', 'Silvassa'],
+  'The Dadra And Nagar Haveli And Daman And Diu': ['Daman', 'Diu', 'Silvassa'],
   'Lakshadweep': ['Kavaratti', 'Agatti', 'Minicoy']
 };
 
@@ -77,11 +80,14 @@ const STATE_COORDS: Record<string, { lat: number; lng: number }> = {
   'West Bengal': { lat: 22.9868, lng: 87.8550 },
   'Delhi': { lat: 28.7041, lng: 77.1025 },
   'Jammu & Kashmir': { lat: 33.7782, lng: 76.5762 },
+  'Jammu And Kashmir': { lat: 33.7782, lng: 76.5762 },
   'Ladakh': { lat: 34.1526, lng: 77.5771 },
   'Puducherry': { lat: 11.9416, lng: 79.8083 },
   'Chandigarh': { lat: 30.7333, lng: 76.7794 },
   'Andaman & Nicobar': { lat: 11.7401, lng: 92.6586 },
+  'Andaman And Nicobar Islands': { lat: 11.7401, lng: 92.6586 },
   'Dadra & Nagar Haveli and Daman & Diu': { lat: 20.1809, lng: 73.0169 },
+  'The Dadra And Nagar Haveli And Daman And Diu': { lat: 20.1809, lng: 73.0169 },
   'Lakshadweep': { lat: 10.5667, lng: 72.6417 }
 };
 
@@ -153,10 +159,14 @@ async function seed() {
     for (const dName of dNames) {
       const dId = `DST_${cleanSlug(state)}_${cleanSlug(dName)}`.slice(0, 50);
       districtMap[state].push(dId);
-      await db.query(
-        `INSERT INTO districts (id, name, state) VALUES ($1, $2, $3);`,
-        [dId, dName, state]
-      );
+      try {
+        await db.query(
+          `INSERT INTO districts (id, name, state) VALUES ($1, $2, $3);`,
+          [dId, dName, state]
+        );
+      } catch {
+        // District already exists under alias, reference preserved
+      }
     }
   }
 
@@ -167,10 +177,14 @@ async function seed() {
     if (!districtMap[st] || districtMap[st].length === 0) {
       const dId = `DST_${cleanSlug(st)}_HQ`.slice(0, 50);
       districtMap[st] = [dId];
-      await db.query(
-        `INSERT INTO districts (id, name, state) VALUES ($1, $2, $3);`,
-        [dId, `${st} State Nodal`, st]
-      );
+      try {
+        await db.query(
+          `INSERT INTO districts (id, name, state) VALUES ($1, $2, $3);`,
+          [dId, `${st} State Nodal`, st]
+        );
+      } catch {
+        // Ignored
+      }
     }
   }
 

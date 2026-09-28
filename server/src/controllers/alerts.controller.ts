@@ -33,9 +33,10 @@ export class AlertsController {
         params.push(String(severity).toLowerCase());
       }
 
-      if (type && type !== 'all') {
-        sql += ` AND alert_type = $${pIdx++}`;
-        params.push(type);
+      const queryType = req.query.alert_type || req.query.type;
+      if (queryType && queryType !== 'all') {
+        sql += ` AND LOWER(alert_type) = LOWER($${pIdx++})`;
+        params.push(String(queryType).toLowerCase());
       }
 
       if (status && status !== 'all') {
@@ -44,8 +45,8 @@ export class AlertsController {
       }
 
       if (activeState && activeState !== 'all') {
-        sql += ` AND state = $${pIdx++}`;
-        params.push(activeState);
+        sql += ` AND LOWER(state) = LOWER($${pIdx++})`;
+        params.push(String(activeState).toLowerCase());
       }
 
       if (entity_type) {

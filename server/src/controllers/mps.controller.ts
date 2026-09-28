@@ -34,8 +34,8 @@ export class MPsController {
       }
 
       if (activeState && activeState !== 'all') {
-        sql += ` AND state = $${pIdx++}`;
-        params.push(activeState);
+        sql += ` AND LOWER(state) = LOWER($${pIdx++})`;
+        params.push(String(activeState).toLowerCase());
       }
 
       if (risk && risk !== 'all') {

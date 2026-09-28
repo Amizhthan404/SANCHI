@@ -36,6 +36,16 @@ const GOV_AVATAR_COLORS = [
 ];
 function gradForIdx(i) { return GOV_AVATAR_COLORS[i % GOV_AVATAR_COLORS.length]; }
 
+function normalizeState(s) {
+  if (!s) return '';
+  return String(s).toLowerCase()
+    .replace(/\bthe\b/g, '')
+    .replace(/&/g, 'and')
+    .replace(/[^\w\s]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 // ── Mobile Sidebar Drawer ──────────────────────────────────────────
 function toggleMobileSidebar(force) {
   const sidebar = document.querySelector('.sidebar');
@@ -246,10 +256,10 @@ function filterAndRenderMPs() {
   const { scored_records } = App.results;
   const f = App.mpFilter;
 
-  let filtered = scored_records.filter(r => {
-    if (f.state !== 'all' && r.state !== f.state) return false;
-    if (f.risk !== 'all' && r.risk_level !== f.risk) return false;
-    if (f.type !== 'all' && !r.type.toLowerCase().includes(f.type)) return false;
+  let filtered = (scored_records || []).filter(r => {
+    if (f.state !== 'all' && normalizeState(r.state) !== normalizeState(f.state)) return false;
+    if (f.risk !== 'all' && (r.risk_level || '').toLowerCase() !== f.risk.toLowerCase()) return false;
+    if (f.type !== 'all' && !(r.type || '').toLowerCase().includes(f.type.toLowerCase())) return false;
     if (f.search) {
       const q = f.search.toLowerCase();
       if (!r.mp_name.toLowerCase().includes(q) && !r.state.toLowerCase().includes(q)) return false;
@@ -385,9 +395,12 @@ function renderAlerts() {
 function populateAlertFilters() {
   const stateSelect = document.getElementById('alert-filter-state');
   if (stateSelect && stateSelect.options.length <= 1) {
-    const states = [...new Set(App.results.alerts.filter(a=>a.state).map(a=>a.state))].sort();
+    const alerts = (App.results && App.results.alerts) || [];
+    const metaStates = (App.data && App.data.metadata && App.data.metadata.states) || [];
+    const alertStates = alerts.filter(a => a.state).map(a => a.state);
+    const states = [...new Set([...metaStates, ...alertStates])].sort();
     states.forEach(s => {
-      const opt = document.createElement('option'); opt.value=s; opt.textContent=s;
+      const opt = document.createElement('option'); opt.value = s; opt.textContent = s;
       stateSelect.appendChild(opt);
     });
   }
@@ -395,15 +408,37 @@ function populateAlertFilters() {
 
 function filterAndRenderAlerts() {
   const f = App.alertsFilter;
-  const { alerts } = App.results;
+  const alerts = (App.results && App.results.alerts) || [];
 
   let filtered = alerts.filter(a => {
-    if (f.severity !== 'all' && a.severity !== f.severity) return false;
-    if (f.type !== 'all' && a.type !== f.type) return false;
-    if (f.state !== 'all' && a.state !== f.state) return false;
-    if (f.search) {
-      const q = f.search.toLowerCase();
-      if (!a.title.toLowerCase().includes(q) && !(a.description||'').toLowerCase().includes(q) && !(a.mp_name||'').toLowerCase().includes(q)) return false;
+    // 1. Severity filter (case-insensitive)
+    if (f.severity !== 'all') {
+      const aSev = (a.severity || '').trim().toLowerCase();
+      const fSev = (f.severity || '').trim().toLowerCase();
+      if (aSev !== fSev) return false;
+    }
+
+    // 2. Alert type filter (checks both alert_type and type)
+    if (f.type !== 'all') {
+      const aType = (a.alert_type || a.type || '').trim().toLowerCase();
+      const fType = (f.type || '').trim().toLowerCase();
+      if (aType !== fType) return false;
+    }
+
+    // 3. State filter (normalized matching)
+    if (f.state !== 'all') {
+      if (normalizeState(a.state) !== normalizeState(f.state)) return false;
+    }
+
+    // 4. Search query
+    if (f.search && f.search.trim()) {
+      const q = f.search.trim().toLowerCase();
+      const title = (a.title || '').toLowerCase();
+      const desc = (a.description || '').toLowerCase();
+      const mp = (a.mp_name || '').toLowerCase();
+      const st = (a.state || '').toLowerCase();
+      const id = (a.id || '').toLowerCase();
+      if (!title.includes(q) && !desc.includes(q) && !mp.includes(q) && !st.includes(q) && !id.includes(q)) return false;
     }
     return true;
   });
@@ -412,59 +447,85 @@ function filterAndRenderAlerts() {
   const perPage = 15;
   const totalPages = Math.ceil(total / perPage);
   App.alertsPage = Math.min(App.alertsPage, totalPages || 1);
-  const paged = filtered.slice((App.alertsPage-1)*perPage, App.alertsPage*perPage);
+  const paged = filtered.slice((App.alertsPage - 1) * perPage, App.alertsPage * perPage);
 
   renderAlertsList(paged);
 
   const countEl = document.getElementById('alerts-count');
-  if (countEl) countEl.textContent = `${total} alerts`;
+  if (countEl) {
+    countEl.textContent = `${total} ${total === 1 ? 'ALERT' : 'ALERTS'}`;
+    countEl.className = total === 0 ? 'badge badge-neutral' : (filtered.some(a => (a.severity || '').toLowerCase() === 'critical') ? 'badge badge-critical' : 'badge badge-high');
+  }
 
   const pager = document.getElementById('alerts-pagination');
   if (pager) {
     let html = '';
-    for (let i=1;i<=Math.min(totalPages,5);i++) {
-      html+=`<button class="page-btn ${i===App.alertsPage?'active':''}" onclick="App.alertsPage=${i};filterAndRenderAlerts()">${i}</button>`;
+    if (totalPages > 1) {
+      for (let i = 1; i <= Math.min(totalPages, 5); i++) {
+        html += `<button class="page-btn ${i === App.alertsPage ? 'active' : ''}" onclick="App.alertsPage=${i};filterAndRenderAlerts()">${i}</button>`;
+      }
     }
-    pager.innerHTML=html;
+    pager.innerHTML = html;
   }
 }
 
 function renderAlertsList(alerts) {
   const container = document.getElementById('alerts-list');
   if (!container) return;
-  if (!alerts.length) {
+  if (!alerts || !alerts.length) {
     container.innerHTML = `<div style="text-align:center;padding:48px;color:var(--txt-muted)">
       <div style="font-size:2rem;margin-bottom:10px">✅</div>
       <div style="font-size:0.85rem;font-weight:600;color:var(--gov-green)">No alerts match the selected filters</div>
-      <div style="font-size:0.78rem;margin-top:4px">Try adjusting the filter criteria above</div>
+      <div style="font-size:0.78rem;margin-top:4px">Try adjusting the filter criteria above or switch to "All Severities" / "All Types"</div>
     </div>`;
     return;
   }
-  const typeLabel = { statistical_outlier:'Statistical Outlier', peer_deviation:'Peer Deviation', duplicate_flag:'Duplicate Flag', term_compliance:'Term Compliance', cost_overrun:'Cost Overrun', stalled_work:'Stalled Work', duplicate_work:'Duplicate Work', no_progress:'No Progress' };
-  container.innerHTML = alerts.map((a, i) => `
+
+  const typeLabel = {
+    statistical_outlier: 'Statistical Outlier',
+    peer_deviation: 'State Peer Dev.',
+    duplicate_flag: 'Duplicate Allocation',
+    term_compliance: 'Term Compliance',
+    unverified_high_value_asset: 'Unverified Asset',
+    rapid_full_payment: 'Rapid Full Payment',
+    payment_before_progress: 'Payment Divergence',
+    cost_overrun: 'Cost Overrun',
+    stalled_work: 'Stalled Work',
+    duplicate_work: 'Duplicate Work',
+    no_progress: 'Zero Progress'
+  };
+
+  container.innerHTML = alerts.map((a, i) => {
+    const rawType = a.alert_type || a.type || 'anomaly';
+    const cleanTypeLabel = typeLabel[rawType] || rawType.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const rawSev = (a.severity || 'Medium');
+    const sevLower = rawSev.toLowerCase();
+    const rawStatus = a.status || (sevLower === 'critical' ? 'Open' : 'Under Review');
+
+    return `
     <div class="alert-item" role="listitem">
-      <div class="alert-severity-strip ${a.severity}"></div>
+      <div class="alert-severity-strip ${sevLower}"></div>
       <div class="alert-body">
         <div class="alert-title">${a.title}</div>
-        <div class="alert-desc">${a.description}</div>
+        <div class="alert-desc">${a.description || ''}</div>
         <div class="alert-meta-row">
-          <span class="badge ${AIEngine.getRiskBadgeClass(a.severity)}">${a.severity.toUpperCase()}</span>
-          <span class="badge badge-info">${typeLabel[a.type]||a.type}</span>
-          ${a.status ? `<span class="badge ${a.status==='Resolved'?'badge-low':a.status==='Under Review'?'badge-medium':'badge-neutral'}">${a.status.toUpperCase()}</span>` : ''}
-          ${a.state?`<span class="badge badge-neutral">${a.state}</span>`:''}
-          ${a.mp_name?`<span class="text-xs text-muted">${a.mp_name.split(' ').slice(0,4).join(' ')}</span>`:''}
+          <span class="badge ${AIEngine.getRiskBadgeClass(sevLower)}">${rawSev.toUpperCase()}</span>
+          <span class="badge badge-info">${cleanTypeLabel}</span>
+          <span class="badge ${rawStatus === 'Resolved' ? 'badge-low' : rawStatus === 'Under Review' ? 'badge-medium' : 'badge-neutral'}">${rawStatus.toUpperCase()}</span>
+          ${a.state ? `<span class="badge badge-neutral">${a.state}</span>` : ''}
+          ${a.mp_name ? `<span class="text-xs text-muted">${a.mp_name.split(' ').slice(0, 4).join(' ')}</span>` : ''}
         </div>
       </div>
       <div class="alert-right">
-        <div class="alert-time">${fmtDate(a.timestamp||new Date().toISOString())}</div>
-        ${a.amount?`<span class="font-mono text-sm text-navy">${fmt(a.amount)}</span>`:''}
-        ${a.risk_score!==undefined?`<span class="badge badge-neutral">Score: ${a.risk_score}</span>`:''}
+        <div class="alert-time">${fmtDate(a.created_at || a.timestamp || new Date().toISOString())}</div>
+        ${a.amount ? `<span class="font-mono text-sm text-navy">${fmt(a.amount)}</span>` : ''}
+        ${a.risk_score !== undefined ? `<span class="badge badge-neutral">Score: ${a.risk_score}</span>` : ''}
         <button class="btn btn-sm btn-outline-primary" style="margin-top:6px;font-size:0.75rem;padding:3px 10px" onclick="openInvestigationModal('${a.id}')">
           Investigate 🔍
         </button>
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 // ── Works Page ─────────────────────────────────────────────────────────
@@ -640,12 +701,12 @@ function filterAndRenderWorks() {
 
   // 2. Filter by state
   if (state && state !== 'all') {
-    list = list.filter(w => w.state === state);
+    list = list.filter(w => normalizeState(w.state) === normalizeState(state));
   }
 
   // 3. Filter by status
   if (status && status !== 'all') {
-    list = list.filter(w => w.status === status);
+    list = list.filter(w => (w.status || '').toLowerCase() === status.toLowerCase());
   }
 
   // 4. Filter by search query
@@ -1006,9 +1067,9 @@ function showToast(msg, type = 'info') {
 function exportAlertsCSV() {
   const { alerts } = App.results;
   const headers = ['Alert ID','Type','Severity','Title','Description','MP Name','State','Amount','Risk Score','Timestamp'];
-  const rows = alerts.map(a => [
-    a.id, a.type, a.severity, `"${a.title}"`, `"${a.description||''}"`,
-    `"${a.mp_name||''}"`, a.state||'', a.amount||'', a.risk_score||'', a.timestamp||''
+  const rows = (alerts || []).map(a => [
+    a.id, a.alert_type || a.type || 'anomaly', a.severity, `"${(a.title || '').replace(/"/g, '""')}"`, `"${(a.description || '').replace(/"/g, '""')}"`,
+    `"${(a.mp_name || '').replace(/"/g, '""')}"`, a.state || '', a.amount || '', a.risk_score || '', a.created_at || a.timestamp || ''
   ]);
   const csv = [headers.join(','), ...rows.map(r=>r.join(','))].join('\n');
   const blob = new Blob([csv], { type: 'text/csv' });
