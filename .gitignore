@@ -1,5 +1,6 @@
-# Node dependencies
+# Dependencies
 node_modules/
+server/node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -7,6 +8,7 @@ yarn-error.log*
 # Build outputs
 dist/
 build/
+server/dist/
 *.tsbuildinfo
 
 # SQLite databases & runtime locks
@@ -24,10 +26,17 @@ server/db/mplads.sqlite-wal
 .env.development.local
 .env.test.local
 .env.production.local
+server/.env
+
+# Temporary & Cache files
+scratch/
+__pycache__/
+*.pyc
 
 # Operating System files
 .DS_Store
 Thumbs.db
+ehthumbs.db
 
 # IDE and Editor files
 .vscode/

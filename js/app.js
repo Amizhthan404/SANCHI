@@ -115,11 +115,20 @@ function navigate(page) {
 
   switch(page) {
     case 'dashboard':  renderDashboard(); break;
-    case 'anomalies':  renderAnomalyPage(); break;
+    case 'anomalies':  
+      renderTableSkeleton('mp-table-tbody', 9, 6);
+      setTimeout(renderAnomalyPage, 80); 
+      break;
     case 'analytics':  renderAnalytics(); break;
-    case 'alerts':     renderAlerts(); break;
+    case 'alerts':     
+      renderAlertsSkeleton('alerts-list', 5);
+      setTimeout(renderAlerts, 80); 
+      break;
     case 'map':        renderMap(); break;
-    case 'works':      renderWorks(); break;
+    case 'works':      
+      renderTableSkeleton('works-table-tbody', 10, 6);
+      setTimeout(renderWorks, 80); 
+      break;
     case 'report':     renderReport(); break;
   }
 }
@@ -229,7 +238,7 @@ function renderRecentAlerts(alerts) {
       <div class="alert-right">
         <div class="alert-time">${fmtDate(a.timestamp || new Date().toISOString())}</div>
         ${a.amount ? `<span class="font-mono text-sm text-navy">${fmt(a.amount)}</span>` : ''}
-        <span class="text-xs text-navy" style="font-weight:600;margin-top:4px">Investigate 🔍</span>
+        <span class="text-xs text-navy" style="font-weight:600;margin-top:4px;display:inline-flex;align-items:center;gap:4px">Case Dossier &rarr;</span>
       </div>
     </div>
   `).join('');
@@ -474,9 +483,11 @@ function renderAlertsList(alerts) {
   if (!container) return;
   if (!alerts || !alerts.length) {
     container.innerHTML = `<div style="text-align:center;padding:48px;color:var(--txt-muted)">
-      <div style="font-size:2rem;margin-bottom:10px">✅</div>
-      <div style="font-size:0.85rem;font-weight:600;color:var(--gov-green)">No alerts match the selected filters</div>
-      <div style="font-size:0.78rem;margin-top:4px">Try adjusting the filter criteria above or switch to "All Severities" / "All Types"</div>
+      <div style="margin-bottom:12px;color:var(--gov-navy)">
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+      </div>
+      <div style="font-size:0.88rem;font-weight:700;color:var(--txt-primary)">No Audit Flags Matching Current Filter Parameters</div>
+      <div style="font-size:0.76rem;margin-top:6px;color:var(--txt-secondary)">All scrutinized expenditure records in this query remit comply with MoSPI threshold guidelines. Adjust filter criteria above to expand query scope.</div>
     </div>`;
     return;
   }
@@ -521,7 +532,7 @@ function renderAlertsList(alerts) {
         ${a.amount ? `<span class="font-mono text-sm text-navy">${fmt(a.amount)}</span>` : ''}
         ${a.risk_score !== undefined ? `<span class="badge badge-neutral">Score: ${a.risk_score}</span>` : ''}
         <button class="btn btn-sm btn-outline-primary" style="margin-top:6px;font-size:0.75rem;padding:3px 10px" onclick="openInvestigationModal('${a.id}')">
-          Investigate 🔍
+          Audit Dossier
         </button>
       </div>
     </div>`;
@@ -591,8 +602,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-critical',
       label: 'Rapid Full Payment',
       severity: 'Critical',
-      icon: '⚡',
-      explanation: `⚠ ${paidPct}% paid out rapidly, only ${compPct}% progress recorded`
+      icon: '',
+      explanation: `${paidPct}% funds disbursed rapidly while only ${compPct}% physical progress is certified`
     });
   }
   // Flag 2: Payment Before Progress
@@ -602,8 +613,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-high',
       label: 'Payment Before Progress',
       severity: 'High',
-      icon: '⚠️',
-      explanation: `⚠ ${paidPct}% funds released, only ${compPct}% physical work built`
+      icon: '',
+      explanation: `${paidPct}% funds released against only ${compPct}% verified physical progress`
     });
   }
 
@@ -617,8 +628,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-critical',
       label: 'Unverified High-Value Asset',
       severity: 'Critical',
-      icon: '🔍',
-      explanation: `⚠ High-value project (${fmtShort(sAmt)}) marked complete but asset never verified`
+      icon: '',
+      explanation: `High-value project (${fmtShort(sAmt)}) recorded complete without NIC GIS geo-tag inspection`
     });
   }
 
@@ -630,8 +641,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-high',
       label: 'Cost Overrun',
       severity: 'High',
-      icon: '💸',
-      explanation: `⚠ Expenditure exceeds sanctioned budget by ${overrunPct}%`
+      icon: '',
+      explanation: `Expenditure exceeds sanctioned budget by ${overrunPct}%`
     });
   }
 
@@ -642,8 +653,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-medium',
       label: 'Stalled Work',
       severity: 'Medium',
-      icon: '⏸',
-      explanation: `⚠ Work initiated in ${w.start_year || 'N/A'} remains stalled at ${compPct}% completion`
+      icon: '',
+      explanation: `Work initiated in ${w.start_year || 'N/A'} remains stalled at ${compPct}% completion`
     });
   }
 
@@ -654,8 +665,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-high',
       label: 'Duplicate Work',
       severity: 'High',
-      icon: '📋',
-      explanation: `⚠ Potential duplicate work submission in ${w.state}`
+      icon: '',
+      explanation: `Potential duplicate work recommendation detected in ${w.state}`
     });
   }
 
@@ -667,8 +678,8 @@ function getWorkAnomalies(w) {
       badgeClass: 'badge-low',
       label: 'No Progress Reported',
       severity: 'Low',
-      icon: '⏳',
-      explanation: `⚠ Sanctioned in ${w.start_year} with 0% progress reported`
+      icon: '',
+      explanation: `Sanctioned in ${w.start_year} with 0% physical progress reported`
     });
   }
 
@@ -775,7 +786,7 @@ function renderWorksTable(works) {
     tbody.innerHTML = `
       <tr>
         <td colspan="10" style="text-align:center;padding:var(--sp-8);color:var(--txt-muted)">
-          <div style="font-size:1.5rem;margin-bottom:8px">🔍</div>
+          <div style="margin-bottom:8px;color:var(--gov-navy)"><svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg></div>
           <strong>No matching works found</strong>
           <div style="font-size:0.78rem;margin-top:4px">Try adjusting your search or anomaly filter</div>
         </td>
@@ -802,7 +813,7 @@ function renderWorksTable(works) {
           `).join('')}
         </div>`;
     } else {
-      flagsHtml = `<div class="flag-chip-row"><span class="badge badge-low">✓ NORMAL PROGRESS</span></div>`;
+      flagsHtml = `<div class="flag-chip-row"><span class="badge badge-low">NORMAL PROGRESS</span></div>`;
     }
 
     // Gap Badge
@@ -849,8 +860,11 @@ function renderWorksTable(works) {
               <div class="timeline-card">
                 <div class="timeline-card-header">
                   <div class="timeline-card-title">
-                    <span>📈 Payment vs. Physical Progress Timeline</span>
-                    ${gap >= 20 ? '<span class="badge badge-critical">⚠ SUSPICIOUS DISBURSEMENT GAP</span>' : ''}
+                    <span style="display:inline-flex;align-items:center;gap:6px">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/><path d="M4 19h16v2H4z"/></svg>
+                  Payment vs. Physical Progress Timeline
+                </span>
+                    ${gap >= 20 ? '<span class="badge badge-critical">DISBURSEMENT GAP FLAG</span>' : ''}
                   </div>
                   <span class="badge badge-neutral text-xs font-mono">${w.work_id}</span>
                 </div>
@@ -858,8 +872,8 @@ function renderWorksTable(works) {
                   <canvas id="chart-timeline-${w.work_id}"></canvas>
                 </div>
                 <div style="display:flex;justify-content:space-between;margin-top:var(--sp-2);font-size:0.72rem;color:var(--txt-muted);padding-top:6px;border-top:1px dashed var(--bdr-light)">
-                  <span>🟧 Orange Area = Funds Released (% of Sanction)</span>
-                  <span>🟩 Green Line = Physical Completion (%)</span>
+                  <span style="display:inline-flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#FF6200;border-radius:2px"></span> Funds Released (% of Sanction)</span>
+                  <span style="display:inline-flex;align-items:center;gap:5px"><span style="display:inline-block;width:10px;height:10px;background:#138808;border-radius:2px"></span> Physical Completion (%)</span>
                   <span>Disbursement Gap = <strong style="color:${gap >= 20 ? '#A00000' : 'var(--gov-navy)'}">${gapSign}${gap}%</strong></span>
                 </div>
               </div>
@@ -917,7 +931,11 @@ function renderWorksTable(works) {
 
                 <!-- Asset Verification Status -->
                 <div class="asset-verified-box">
-                  <span style="font-size:1.3rem">${w.status === 'Completed' && w.asset_status !== 'Not Verified' ? '🏛️' : '🔍'}</span>
+                  <span style="color:var(--gov-navy);display:flex;align-items:center">
+  ${w.status === 'Completed' && w.asset_status !== 'Not Verified' ? 
+    '<svg viewBox="0 0 24 24" width="22" height="22" fill="#138808"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>' : 
+    '<svg viewBox="0 0 24 24" width="22" height="22" fill="#C0392B"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>'}
+</span>
                   <div style="flex:1">
                     <div style="font-weight:700;color:var(--gov-navy)">Geo-Tagged Asset Status: 
                       <span class="badge ${w.status === 'Completed' && w.asset_status !== 'Not Verified' ? 'badge-low' : 'badge-critical'}">
@@ -1047,7 +1065,7 @@ function renderReport() {
       `Implement milestone-based payment release mechanism linked to verified work completion percentages to prevent fund blockage in stalled projects.`,
       `Mandate quarterly state-wise peer benchmarking reports to proactively identify allocation pattern deviations before annual audit cycles.`,
       `Integrate MPLADS data with PFMS, GIS asset tracking, and district-level MIS for end-to-end transparency in works execution and fund flow monitoring.`
-    ].map(r=>`<li>✓ ${r}</li>`).join('');
+    ].map(r=>`<li>${r}</li>`).join('');
   }
 }
 
@@ -1104,18 +1122,14 @@ function updateAuthUI() {
   if (!roleBtnText) return;
 
   if (user) {
-    const roleEmoji = {
-      Ministry: '🏛️',
-      State: '🏢',
-      District: '📍',
-      MP: '👤',
-      Citizen: '👥'
-    }[user.role] || '🛡️';
-
-    if (roleBtnIcon) roleBtnIcon.textContent = roleEmoji;
+    if (roleBtnIcon) {
+      roleBtnIcon.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
+    }
     roleBtnText.textContent = `${user.name} (${user.role}${user.scope_id && user.scope_id !== 'ALL' ? ': ' + user.scope_id : ''})`;
   } else {
-    if (roleBtnIcon) roleBtnIcon.textContent = '👤';
+    if (roleBtnIcon) {
+      roleBtnIcon.innerHTML = `<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`;
+    }
     roleBtnText.textContent = 'Public Viewer (Demo)';
   }
 }
@@ -1200,7 +1214,7 @@ async function submitLandingLogin() {
   }
   // Validate CAPTCHA
   if (!captchaInput || captchaInput !== (captchaDisplay || '').toUpperCase()) {
-    showToast('⛔ CAPTCHA verification failed — please re-enter code.', 'high');
+    showToast('CAPTCHA verification failed: Please re-enter the displayed code.', 'high');
     refreshCaptcha();
     const captchaBox = document.querySelector('.login-captcha-box');
     if (captchaBox) {
@@ -1211,7 +1225,7 @@ async function submitLandingLogin() {
     return;
   }
   try {
-    showToast('🔐 Authenticating with official MoSPI gateway...', 'info');
+    showToast('Authenticating with official MoSPI gateway...', 'info');
     const result = await ApiClient.login(email, password);
     sessionStorage.setItem('Sanchi_session_active', 'true');
     const landing = document.getElementById('login-landing-page');
@@ -1220,10 +1234,10 @@ async function submitLandingLogin() {
     if (app) app.style.display = 'block';
     hideCheatsheetTab();
     updateAuthUI();
-    showToast(`✅ Welcome ${result.user.name}! Authenticated as ${result.user.role}`, 'success');
+    showToast(`Authenticated: Welcome ${result.user.name} (${result.user.role})`, 'success');
     await reloadDataset();
   } catch (err) {
-    showToast(`⛔ Authentication failed: ${err.message}`, 'high');
+    showToast(`Authentication failed: ${err.message}`, 'high');
     // Shake the login card for visual feedback
     const card = document.querySelector('.login-sec-card');
     if (card) {
@@ -1435,13 +1449,13 @@ function openInvestigationModal(alertId) {
 
     <!-- Explainable Why Flagged -->
     <div style="background:#FFF9E6;border-left:4px solid #F39C12;padding:var(--sp-3) var(--sp-4);border-radius:0 var(--r-sm) var(--r-sm) 0;margin-bottom:var(--sp-4)">
-      <div style="font-size:0.82rem;font-weight:700;color:#7A4B00;margin-bottom:4px">🔬 Explainable Anomaly Audit Factor</div>
+      <div style="font-size:0.82rem;font-weight:700;color:#7A4B00;margin-bottom:4px">Explainable Anomaly Audit Factor</div>
       ${explainHtml}
     </div>
 
     <!-- Audit & Investigation Log -->
     <div style="border-top:1px solid var(--bdr-light);padding-top:var(--sp-3);margin-top:var(--sp-4)">
-      <div style="font-size:0.78rem;font-weight:700;color:var(--txt-secondary);margin-bottom:6px">📋 Case Audit History</div>
+      <div style="font-size:0.78rem;font-weight:700;color:var(--txt-secondary);margin-bottom:6px">Case Audit History</div>
       <div style="font-size:0.76rem;color:var(--txt-muted);line-height:1.6">
         <div>&bull; <strong>Detection Timestamp:</strong> ${fmtDate(alert.timestamp || new Date().toISOString())}</div>
         <div>&bull; <strong>Current Resolution State:</strong> <span style="font-weight:600;color:${statusColor}">${currentStatus}</span></div>
@@ -1452,7 +1466,7 @@ function openInvestigationModal(alertId) {
     <!-- SMS & Notification Delivery Stream (MoSPI Statutory Escalation) -->
     <div style="background:#F0FDF4;border:1px solid #BBF7D0;padding:var(--sp-3);border-radius:var(--r-sm);margin-top:var(--sp-4)">
       <div style="font-size:0.78rem;font-weight:700;color:#166534;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">
-        <span>📲 NIC SMS &amp; Multi-Channel Alert Gateway</span>
+        <span>NIC SMS &amp; Multi-Channel Alert Gateway</span>
         <span class="badge" style="background:#DCFCE7;color:#15803D;font-size:0.65rem">AUTOMATED DISPATCH ACTIVE</span>
       </div>
       <div style="font-size:0.75rem;color:#15803D;line-height:1.5">
@@ -1468,7 +1482,7 @@ function openInvestigationModal(alertId) {
 
     ${!isOfficer ? `
       <div style="margin-top:var(--sp-4);padding:var(--sp-3);background:#FEF2F2;border:1px solid #FCA5A5;border-radius:var(--r-sm);font-size:0.78rem;color:#991B1B;display:flex;align-items:center;justify-content:space-between">
-        <span>🔒 <strong>Officer Verification Required:</strong> Sign in as an authorized Officer (Ministry, State, or District) to triage, dispatch notices, or resolve this case.</span>
+        <span><strong>Officer Verification Required:</strong> Sign in as an authorized Officer (Ministry, State, or District) to triage, dispatch notices, or resolve this case.</span>
         <button class="btn btn-sm btn-primary" onclick="closeInvestigationModal();openAuthModal()">Sign In Now</button>
       </div>
     ` : `
@@ -1482,10 +1496,10 @@ function openInvestigationModal(alertId) {
   footer.innerHTML = `
     <button class="btn btn-neutral" onclick="closeInvestigationModal()">Close</button>
     ${isOfficer ? `
-      <button class="btn btn-warning" style="background:#D97706;color:white;border:none" onclick="dispatchAlertSMSNotice('${alert.id}')" title="Dispatch automated SMS and email alert via NIC gateway">📲 Dispatch NIC SMS Notice</button>
-      <button class="btn btn-secondary" onclick="updateAlertInvestigationStatus('${alert.id}', 'Under Review')">⏳ Mark Under Review</button>
-      <button class="btn btn-neutral" style="border-color:#C0392B;color:#C0392B" onclick="updateAlertInvestigationStatus('${alert.id}', 'False Positive')">⚠️ Mark False Positive</button>
-      <button class="btn btn-primary" onclick="updateAlertInvestigationStatus('${alert.id}', 'Resolved')">✅ Resolve Case</button>
+      <button class="btn btn-warning" style="background:#D97706;color:white;border:none" onclick="dispatchAlertSMSNotice('${alert.id}')" title="Dispatch official SMS notification via NIC gateway">Dispatch NIC Notice</button>
+      <button class="btn btn-secondary" onclick="updateAlertInvestigationStatus('${alert.id}', 'Under Review')">Mark Under Review</button>
+      <button class="btn btn-neutral" style="border-color:#C0392B;color:#C0392B" onclick="updateAlertInvestigationStatus('${alert.id}', 'False Positive')">Mark False Positive</button>
+      <button class="btn btn-primary" onclick="updateAlertInvestigationStatus('${alert.id}', 'Resolved')">Resolve Case</button>
     ` : ''}
   `;
 
@@ -1521,7 +1535,7 @@ async function dispatchAlertSMSNotice(alertId) {
       recipients: [`District Magistrate (${alert.state || 'Jurisdiction'})`, `Hon'ble MP Secretariat (${alert.mp_name || 'MP'})`]
     });
 
-    showToast(`📲 Official NIC SMS Notice #${refCode} dispatched to District Magistrate & MP Office`, 'success');
+    showToast(`Official NIC Notice #${refCode} dispatched to District Magistrate & MP Office`, 'success');
     openInvestigationModal(alertId);
   } catch (err) {
     showToast(`SMS dispatch failed: ${err.message}`, 'high');
@@ -1589,13 +1603,13 @@ async function init() {
     if (window.MPLADS_DATA) {
       App.data = window.MPLADS_DATA;
       App.results = (window.MPLADS_DATA && window.MPLADS_DATA.results) || (typeof AIEngine.run === 'function' ? AIEngine.run(window.MPLADS_DATA) : window.MPLADS_DATA);
-      showToast('⚠️ Running with local fallback dataset. Backend API is offline.', 'high');
+      showToast('Notice: Running with local fallback dataset. Backend API is offline.', 'high');
     } else {
       const overlay = document.getElementById('welcome-overlay');
       if (overlay) {
         overlay.innerHTML = `
           <div style="background:white;padding:32px;border-radius:8px;max-width:520px;text-align:center;box-shadow:0 12px 36px rgba(0,0,0,0.25);border-top:4px solid #C0392B">
-            <h3 style="color:#C0392B;margin-bottom:12px">⚠️ Backend Server Offline</h3>
+            <h3 style="color:#C0392B;margin-bottom:12px">Backend Server Offline</h3>
             <p style="font-size:0.88rem;color:#4A5568;margin-bottom:16px">The frontend could not connect to <code>http://localhost:5000/api</code>.</p>
             <div style="font-size:0.8rem;color:#2D3748;background:#F7FAFC;padding:12px;border-radius:6px;border:1px solid #E2E8F0;text-align:left;margin-bottom:20px">
               <strong>To start the backend server:</strong><br/>
@@ -1721,3 +1735,62 @@ async function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+
+// ── Legal & Compliance Policy Modal Handlers ──────────────────────────
+function openPolicyModal(tab = 'tos') {
+  const modal = document.getElementById('policy-modal');
+  if (!modal) return;
+  modal.classList.add('open');
+  switchPolicyTab(tab);
+}
+
+function closePolicyModal() {
+  const modal = document.getElementById('policy-modal');
+  if (modal) modal.classList.remove('open');
+}
+
+function switchPolicyTab(tab) {
+  document.querySelectorAll('.policy-tab-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tab === tab);
+  });
+  document.querySelectorAll('.policy-content-panel').forEach(panel => {
+    panel.style.display = panel.id === `policy-${tab}` ? 'block' : 'none';
+  });
+}
+
+// ── Institutional Skeleton Loaders ────────────────────────────────────
+function renderTableSkeleton(tbodyId, colCount, rowCount = 5) {
+  const tbody = document.getElementById(tbodyId);
+  if (!tbody) return;
+  let rows = '';
+  for (let r = 0; r < rowCount; r++) {
+    rows += '<tr>';
+    for (let c = 0; c < colCount; c++) {
+      const width = 45 + ((r * 13 + c * 29) % 45);
+      rows += `<td><span class="skeleton skeleton-cell" style="width:${width}%"></span></td>`;
+    }
+    rows += '</tr>';
+  }
+  tbody.innerHTML = rows;
+}
+
+function renderAlertsSkeleton(containerId, rowCount = 4) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  let html = '';
+  for (let i = 0; i < rowCount; i++) {
+    html += `
+      <div class="alert-item" style="opacity:0.7">
+        <div class="skeleton" style="width:4px;height:100%;min-height:50px"></div>
+        <div class="alert-body" style="width:100%">
+          <div class="skeleton" style="height:14px;width:${40 + (i%3)*20}%;margin-bottom:6px"></div>
+          <div class="skeleton" style="height:11px;width:80%;margin-bottom:8px"></div>
+          <div style="display:flex;gap:8px">
+            <span class="skeleton skeleton-badge"></span>
+            <span class="skeleton skeleton-badge"></span>
+          </div>
+        </div>
+      </div>`;
+  }
+  el.innerHTML = html;
+}

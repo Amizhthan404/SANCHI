@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sanchi — MPLADS Anomaly & Lifecycle Surveillance | SIH 2026 Prototype</title>
+  <title>Sanchi: MPLADS Scheme Surveillance & Anomaly Audit Portal | Government of India</title>
   <meta name="description" content="AI-assisted statistical anomaly detection and monitoring platform for MPLADS fund utilization. Student prototype developed for Smart India Hackathon 2026, Problem Statement 26102."/>
   <meta name="keywords" content="MPLADS, Anomaly Detection, Fund Monitoring, MoSPI, Smart India Hackathon 2026, PS 26102"/>
   <meta name="author" content="SIH 2026 Student Team • Problem Statement 26102"/>
@@ -55,7 +55,7 @@
       font-size: 0.82rem; color: var(--txt-secondary); line-height: 1.6;
       padding: var(--sp-3) var(--sp-4);
       background: var(--bg-light);
-      border-left: 3px solid var(--gov-navy);
+      border: 1px solid var(--bdr-light); border-top: 2px solid var(--gov-navy);
       border-radius: 0 var(--r-sm) var(--r-sm) 0;
     }
     .findings-list li .fi-icon { flex-shrink: 0; font-size: 0.85rem; margin-top: 1px; }
@@ -64,7 +64,7 @@
       display: flex; gap: var(--sp-3); align-items: flex-start;
       font-size: 0.82rem; color: var(--txt-secondary); line-height: 1.6;
       padding: var(--sp-3) var(--sp-4);
-      border-left: 3px solid var(--gov-green);
+      border: 1px solid var(--bdr-light); border-top: 2px solid var(--gov-green);
       background: var(--gov-green-lt);
       border-radius: 0 var(--r-sm) var(--r-sm) 0;
     }
@@ -118,7 +118,7 @@
   <div class="gov-tricolor" role="presentation">
     <div class="tricolor-block tricolor-saffron"></div>
     <div class="tricolor-block tricolor-white">
-      <div class="ashoka-chakra-center" title="Ashoka Chakra — 24 Spokes">
+      <div class="ashoka-chakra-center" title="Ashoka Chakra: 24 Spokes">
         <svg viewBox="0 0 40 40" width="28" height="28" aria-hidden="true">
           <circle cx="20" cy="20" r="18" fill="none" stroke="#000088" stroke-width="2.5"/>
           <circle cx="20" cy="20" r="4" fill="#000088"/>
@@ -146,14 +146,14 @@
   
   <div class="login-header-banner">
     <div class="login-header-title">
-      <div style="font-size:1.8rem">🇮🇳</div>
+      <div><svg viewBox="0 0 36 24" width="28" height="19" style="border-radius:2px;box-shadow:0 0 1px rgba(0,0,0,0.5);display:inline-block;vertical-align:middle" aria-label="Tricolour"><rect width="36" height="8" fill="#FF9933"/><rect y="8" width="36" height="8" fill="#FFFFFF"/><rect y="16" width="36" height="8" fill="#138808"/><circle cx="18" cy="12" r="3.2" fill="none" stroke="#000088" stroke-width="0.8"/></svg></div>
       <div>
         <div style="font-size:1.05rem;font-weight:700;letter-spacing:0.02em">Ministry of Statistics &amp; Programme Implementation (MoSPI)</div>
         <div style="font-size:0.75rem;color:rgba(255,255,255,0.75)">Government of India • Cyber-Audit Security Portal • SIH 2026 Problem Statement 26102</div>
       </div>
     </div>
     <div style="display:flex;gap:10px;align-items:center">
-      <span style="font-size:0.72rem;background:rgba(255,255,255,0.15);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.2)">🔒 256-bit SSL Encrypted</span>
+      <span style="font-size:0.72rem;background:rgba(255,255,255,0.15);padding:4px 10px;border-radius:4px;border:1px solid rgba(255,255,255,0.2)"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> 256-bit SSL Encrypted</span>
       <span class="prototype-badge">SIH 2026 PROTOTYPE</span>
     </div>
   </div>
@@ -164,14 +164,14 @@
 
       <!-- RESTRICTED ACCESS banner -->
       <div style="background:#FFF3CD;border:1px solid #F59E0B;border-radius:6px;padding:8px 12px;margin-bottom:18px;display:flex;align-items:flex-start;gap:8px">
-        <span style="font-size:1rem;flex-shrink:0">⚠️</span>
+        <span style="display:flex;align-items:center;color:#92400E;flex-shrink:0"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" style="vertical-align:middle"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></span>
         <div>
           <div style="font-size:0.72rem;font-weight:800;color:#92400E;text-transform:uppercase;letter-spacing:0.06em">Restricted Government Access</div>
           <div style="font-size:0.7rem;color:#78350F;margin-top:2px;line-height:1.4">Unauthorised access is a criminal offence under the IT Act, 2000 (Sec. 43 &amp; 66). All login attempts are logged, monitored, and audited.</div>
         </div>
       </div>
 
-      <h2>🔐 Official Portal Sign In</h2>
+      <h2 style="display:flex;align-items:center;gap:8px"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> Official Portal Sign In</h2>
       <p>Enter your official NIC / MoSPI government credentials to access jurisdictional audit surveillance intelligence.</p>
 
       <form onsubmit="event.preventDefault(); submitLandingLogin();">
@@ -190,19 +190,19 @@
           <div class="login-captcha-box">
             <span class="login-captcha-code" id="landing-captcha-display" onclick="fillCaptchaFromDisplay()" title="Click to auto-fill code" style="cursor:pointer;user-select:none">SANCHI-26102</span>
             <input type="text" id="landing-captcha-input" class="login-form-input" placeholder="Enter code above" style="width:140px;text-transform:uppercase" required/>
-            <button type="button" class="btn btn-secondary btn-xs" onclick="refreshCaptcha()" title="Refresh CAPTCHA">🔄</button>
+            <button type="button" class="btn btn-secondary btn-xs" onclick="refreshCaptcha()" title="Refresh CAPTCHA"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg></button>
           </div>
         </div>
 
-        <button type="submit" class="login-btn-submit" style="margin-top:8px">🔒 SIGN IN TO SECURE AUDIT DASHBOARD →</button>
+        <button type="submit" class="login-btn-submit" style="margin-top:8px">SIGN IN TO AUDIT DASHBOARD →</button>
       </form>
 
       <!-- Security certification strip -->
       <div style="margin-top:16px;border-top:1px solid #E2E8F0;padding-top:12px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap">
-        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px">🔒 256-bit TLS 1.3</span>
-        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px">🛡️ ISO 27001 Compliant</span>
-        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px">📋 Session Audited</span>
-        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px">🇮🇳 NIC Secured</span>
+        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> 256-bit TLS 1.3</span>
+        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg> ISO 27001 Compliant</span>
+        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg> Session Audited</span>
+        <span style="font-size:0.65rem;color:#64748B;display:flex;align-items:center;gap:4px"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg> NIC Secured</span>
       </div>
     </div>
   </div><!-- end .login-body-grid -->
@@ -210,12 +210,12 @@
 
 <!-- ╺─ CHEAT-SHEET SLIDE-OUT DRAWER (outside login grid) ─╾ -->
 <div class="cheatsheet-drawer" id="cheatsheet-drawer">
-  <div class="login-roles-hint-title">⚡ Official Test Authority Cheat-Sheet</div>
+  <div class="login-roles-hint-title">Official Test Authority Credentials Panel</div>
   <div class="login-roles-hint-sub">Select any pre-configured official role below to 1-click auto fill credentials &amp; test real authorization:</div>
 
       <div class="login-role-demo-card">
         <div>
-          <div style="font-weight:700;font-size:0.84rem;color:#003366">🏛️ Ministry Admin (MoSPI)</div>
+          <div style="font-weight:700;font-size:0.84rem;color:#003366"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 1L2 6v2h20V6L12 1zm-7 9v8h2v-8H5zm4 0v8h2v-8H9zm4 0v8h2v-8h-2zm4 0v8h2v-8h-2zM2 20v2h20v-2H2z"/></svg> Ministry Admin (MoSPI)</div>
           <div style="font-size:0.72rem;color:#64748B">Scope: National (All 773 MPs &amp; 36 States)</div>
           <div style="font-size:0.7rem;font-family:var(--font-mono);color:#003366">admin@mospi.gov.in &bull; Password@123</div>
         </div>
@@ -224,7 +224,7 @@
 
       <div class="login-role-demo-card">
         <div>
-          <div style="font-weight:700;font-size:0.84rem;color:#138808">🏢 State Nodal Officer</div>
+          <div style="font-weight:700;font-size:0.84rem;color:#138808"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2 3v3h3V6H6zm5 0v3h3V6h-3zm5 0v3h3V6h-3zM6 11v3h3v-3H6zm5 0v3h3v-3h-3zm5 0v3h3v-3h-3zM6 16v3h3v-3H6zm5 0v3h3v-3h-3zm5 0v3h3v-3h-3z"/></svg> State Nodal Officer</div>
           <div style="font-size:0.72rem;color:#64748B">Scope: State Jurisdiction (Maharashtra Only)</div>
           <div style="font-size:0.7rem;font-family:var(--font-mono);color:#138808">nodal.maharashtra@gov.in &bull; Password@123</div>
         </div>
@@ -233,7 +233,7 @@
 
       <div class="login-role-demo-card">
         <div>
-          <div style="font-weight:700;font-size:0.84rem;color:#D97706">📍 District Collector</div>
+          <div style="font-weight:700;font-size:0.84rem;color:#D97706"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> District Collector</div>
           <div style="font-size:0.72rem;color:#64748B">Scope: District Level (Mumbai City District)</div>
           <div style="font-size:0.7rem;font-family:var(--font-mono);color:#D97706">dm.mumbai@nic.in &bull; Password@123</div>
         </div>
@@ -242,7 +242,7 @@
 
       <div class="login-role-demo-card">
         <div>
-          <div style="font-weight:700;font-size:0.84rem;color:#7C3AED">👤 Hon'ble MP</div>
+          <div style="font-weight:700;font-size:0.84rem;color:#7C3AED"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Hon'ble MP</div>
           <div style="font-size:0.72rem;color:#64748B">Scope: Personal Constituency &amp; Works Ledgers</div>
           <div style="font-size:0.7rem;font-family:var(--font-mono);color:#7C3AED">mp.abhishek@sansad.nic.in &bull; Password@123</div>
         </div>
@@ -250,21 +250,21 @@
       </div>
 
       <div style="font-size:0.7rem;color:rgba(255,255,255,0.55);margin-top:12px;line-height:1.5">
-        ℹ️ <strong>Judicial Audit Notice:</strong> Password hints are provided for evaluator testing during Smart India Hackathon 2026 evaluation.
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:middle"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg> <strong>Evaluation Access Notice:</strong> Password hints are provided for evaluator testing during Smart India Hackathon 2026 evaluation.
       </div>
   </div><!-- end cheatsheet-drawer -->
 
 <!-- Pull tab — always visible on right edge -->
 <div class="cheatsheet-pull-tab" id="cheatsheet-pull-tab" onclick="toggleCheatsheet()" role="button" aria-label="Toggle test credentials panel">
-  <span class="tab-arrow" id="cheatsheet-tab-arrow">❮</span>
+  <span class="tab-arrow" id="cheatsheet-tab-arrow">&lsaquo;</span>
   <span>Test</span>
   <span>Login</span>
 </div>
 
 <!-- ══ WELCOME SCREEN ═════════════════════════════════════════════════ -->
 <div id="welcome-overlay" class="welcome-overlay">
-  <div class="welcome-emblem">🇮🇳</div>
-  <div class="welcome-title">Sanchi — MPLADS Anomaly & Lifecycle Surveillance</div>
+  <div class="welcome-emblem" style="display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 36 24" width="28" height="19" style="border-radius:2px;box-shadow:0 0 1px rgba(0,0,0,0.5);display:inline-block;vertical-align:middle" aria-label="Tricolour"><rect width="36" height="8" fill="#FF9933"/><rect y="8" width="36" height="8" fill="#FFFFFF"/><rect y="16" width="36" height="8" fill="#138808"/><circle cx="18" cy="12" r="3.2" fill="none" stroke="#000088" stroke-width="0.8"/></svg></div>
+  <div class="welcome-title">Sanchi: MPLADS Fund Surveillance & Anomaly Audit System</div>
   <div class="welcome-subtitle">Student Prototype for Smart India Hackathon 2026 • Problem Statement 26102</div>
   <div style="margin-top:8px;font-size:0.75rem;color:rgba(255,255,255,0.7)">Non-official academic prototype developed for MoSPI Scheme Intelligence</div>
   <div class="welcome-progress">
@@ -285,7 +285,7 @@
   <div class="gov-tricolor" role="presentation">
     <div class="tricolor-block tricolor-saffron"></div>
     <div class="tricolor-block tricolor-white">
-      <div class="ashoka-chakra-center" title="Ashoka Chakra — 24 Spokes">
+      <div class="ashoka-chakra-center" title="Ashoka Chakra: 24 Spokes">
         <svg viewBox="0 0 40 40" width="28" height="28" aria-hidden="true">
           <circle cx="20" cy="20" r="18" fill="none" stroke="#000088" stroke-width="2.5"/>
           <circle cx="20" cy="20" r="4" fill="#000088"/>
@@ -322,13 +322,13 @@
     </div>
     <div class="infobar-right">
       <span>Last Refresh: <strong id="last-updated">Live</strong></span>
-      <span class="data-provenance-tag" onclick="openDataSourcesModal()" title="Click to inspect live Multi-Source Ingestion Pipelines & NIC SMS Gateway" style="cursor:pointer">📊 DATA PIPELINES: PFMS • e-SAKSHI • GeM • NIC SMS ℹ️</span>
+      <span class="data-provenance-tag" onclick="openDataSourcesModal()" title="Click to inspect live Multi-Source Ingestion Pipelines & NIC SMS Gateway" style="cursor:pointer">DATA PIPELINES: PFMS • e-SAKSHI • GeM • NIC SMS</span>
       <span class="infobar-sep">|</span>
       <button id="btn-auth-role" class="auth-role-btn" onclick="openAuthModal()" title="Switch authenticated user role or sign in">
-        <span id="auth-role-icon">👤</span>
+        <span id="auth-role-icon" style="display:inline-flex;align-items:center"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></span>
         <span id="auth-role-text">Public Viewer (Demo)</span> ▾
       </button>
-      <button class="btn btn-secondary btn-xs" onclick="signOutToLandingPage()" title="Lock session & return to Official Gateway">🔒 Sign Out</button>
+      <button class="btn btn-secondary btn-xs" onclick="signOutToLandingPage()" title="Lock session & return to Official Gateway">Sign Out</button>
     </div>
   </div>
 
@@ -362,7 +362,7 @@
     <!-- Title block -->
     <div class="gov-header-text">
       <div class="gov-ministry-en">
-        Sanchi — MPLADS Anomaly &amp; Lifecycle Surveillance
+        Sanchi: MPLADS Scheme Surveillance &amp; Anomaly Audit
         <span class="prototype-badge">SIH 2026 Prototype</span>
       </div>
       <div class="gov-ministry-hi">
@@ -526,10 +526,12 @@
           <div class="kpi-card accent-blue" role="region" aria-label="Total MPs">
             <div class="kpi-header">
               <div class="kpi-label-top">Total MPs Analysed</div>
-              <div class="kpi-icon-box blue">👥</div>
+              <div class="kpi-icon-box blue" style="color:var(--gov-ashoka-blue)">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
             </div>
             <div class="kpi-value"><span id="kpi-total-mps">—</span></div>
-            <div class="kpi-sublabel">Rajya Sabha — Current &amp; Full dataset</div>
+            <div class="kpi-sublabel">Rajya Sabha: Current &amp; Full dataset</div>
           </div>
           <div class="kpi-card accent-saffron" role="region" aria-label="Total Funds">
             <div class="kpi-header">
@@ -542,7 +544,9 @@
           <div class="kpi-card accent-red" role="region" aria-label="Anomalies">
             <div class="kpi-header">
               <div class="kpi-label-top">Anomalies Detected</div>
-              <div class="kpi-icon-box red">⚠</div>
+              <div class="kpi-icon-box red" style="color:#C0392B">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                    </div>
             </div>
             <div class="kpi-value"><span id="kpi-anomalies">—</span></div>
             <div class="kpi-sublabel">MPs with composite risk score ≥ 25</div>
@@ -551,7 +555,9 @@
           <div class="kpi-card" role="region" aria-label="Alerts">
             <div class="kpi-header">
               <div class="kpi-label-top">Total Alerts Generated</div>
-              <div class="kpi-icon-box navy">🔔</div>
+              <div class="kpi-icon-box navy" style="color:var(--gov-navy)">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>
+                    </div>
             </div>
             <div class="kpi-value"><span id="kpi-alerts">—</span></div>
             <div class="kpi-sublabel">All severity levels combined</div>
@@ -559,16 +565,20 @@
           <div class="kpi-card accent-red" role="region" aria-label="Critical Risk">
             <div class="kpi-header">
               <div class="kpi-label-top">Critical Risk MPs</div>
-              <div class="kpi-icon-box red">🚨</div>
+              <div class="kpi-icon-box red" style="color:#A00000">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 3.84L19.53 19H4.47L12 5.84zM11 10h2v4h-2zm0 6h2v2h-2z"/></svg>
+                    </div>
             </div>
             <div class="kpi-value"><span id="kpi-critical">—</span></div>
-            <div class="kpi-sublabel">Risk score ≥ 75 — Priority action</div>
+            <div class="kpi-sublabel">Risk score ≥ 75 (Priority action)</div>
             <div class="kpi-change down" aria-label="Immediate action">Action required</div>
           </div>
           <div class="kpi-card accent-green" role="region" aria-label="States">
             <div class="kpi-header">
               <div class="kpi-label-top">States / UTs Covered</div>
-              <div class="kpi-icon-box green">🗺</div>
+              <div class="kpi-icon-box green" style="color:var(--gov-green)">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+                    </div>
             </div>
             <div class="kpi-value"><span id="kpi-states">—</span></div>
             <div class="kpi-sublabel">Pan-India MPLADS coverage</div>
@@ -659,7 +669,7 @@
       <main class="page-content" id="page-anomalies" role="main" aria-label="Anomaly Detection">
 
         <div class="section-header">
-          <h2><span class="sh-icon">⚠</span>&nbsp;MP Risk &amp; Anomaly Analysis</h2>
+          <h2><span class="sh-icon" style="color:#C0392B"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" style="vertical-align:middle"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg></span>&nbsp;MP Risk &amp; Anomaly Analysis</h2>
           <div class="section-header-right">
             <span id="mp-count" class="text-xs text-muted"></span>
             <button class="btn btn-saffron btn-sm" onclick="exportMPsCSV()">↓ Export Risk Report</button>
@@ -722,7 +732,7 @@
         <!-- MP Table -->
         <div class="gov-panel">
           <div class="panel-header">
-            <div class="panel-title"><span class="panel-title-dot"></span>Member of Parliament — Risk Register</div>
+            <div class="panel-title"><span class="panel-title-dot"></span>Member of Parliament: Risk Register</div>
             <div class="panel-actions">
               <span class="badge badge-neutral text-xs">All 773 MPs from official MPLADS records</span>
             </div>
@@ -759,7 +769,7 @@
       <main class="page-content" id="page-analytics" role="main" aria-label="Statistical Analysis">
 
         <div class="section-header">
-          <h2><span class="sh-icon">📊</span>&nbsp;Statistical Analysis &amp; Trend Reports</h2>
+          <h2><span class="sh-icon" style="color:var(--gov-navy)"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/><path d="M4 19h16v2H4z"/></svg></span>&nbsp;Statistical Analysis &amp; Trend Reports</h2>
           <div class="section-header-right">
             <button class="btn btn-secondary btn-sm" onclick="exportMPsCSV()">↓ Export Data</button>
           </div>
@@ -810,7 +820,7 @@
         <!-- State Rankings Table -->
         <div class="gov-panel">
           <div class="panel-header">
-            <div class="panel-title"><span class="panel-title-dot"></span>State/UT Performance Ranking — Fund Utilisation</div>
+            <div class="panel-title"><span class="panel-title-dot"></span>State/UT Performance Ranking: Fund Utilisation</div>
             <span class="badge badge-info">Sorted by Total Allocation</span>
           </div>
           <div class="data-table-wrap">
@@ -838,7 +848,7 @@
       <main class="page-content" id="page-alerts" role="main" aria-label="Alerts and Flags">
 
         <div class="section-header">
-          <h2><span class="sh-icon">🔔</span>&nbsp;Alerts &amp; Compliance Flags</h2>
+          <h2><span class="sh-icon" style="color:var(--gov-navy)"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/></svg></span>&nbsp;Alerts &amp; Compliance Flags</h2>
           <div class="section-header-right">
             <span id="alerts-count" class="badge badge-high"></span>
             <button class="btn btn-secondary btn-sm" onclick="exportAlertsCSV()">↓ Export CSV</button>
@@ -894,7 +904,7 @@
         <div class="gov-panel">
           <div class="panel-header">
             <div class="panel-title"><span class="panel-title-dot" style="background:#C0392B"></span>Alert Register</div>
-            <span class="badge badge-neutral" style="font-size:0.65rem">Sorted by severity — Critical first</span>
+            <span class="badge badge-neutral" style="font-size:0.65rem">Sorted by severity: Critical first</span>
           </div>
           <div id="alerts-list" role="list" aria-label="Alert list"></div>
           <div class="pagination-bar" role="navigation" aria-label="Alerts pagination">
@@ -910,7 +920,7 @@
       <main class="page-content" id="page-works" role="main" aria-label="Works Monitoring">
 
         <div class="section-header">
-          <h2><span class="sh-icon">🔧</span>&nbsp;MPLADS Works &amp; Payment Compliance Monitoring</h2>
+          <h2><span class="sh-icon" style="color:var(--gov-navy)"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg></span>&nbsp;MPLADS Works &amp; Payment Compliance Monitoring</h2>
           <div class="section-header-right">
             <span class="badge badge-info">PFMS &bull; Asset Geo-Tags &bull; Disbursement Audits</span>
           </div>
@@ -918,31 +928,39 @@
 
         <!-- Works KPI flags -->
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-4);margin-bottom:var(--sp-5)">
-          <div class="works-flag-card" style="border-left:4px solid var(--gov-navy)">
-            <span class="works-flag-icon">🏗</span>
+          <div class="works-flag-card" style="border-top:3px solid var(--gov-navy)">
+            <span class="works-flag-icon" style="color:var(--gov-navy)">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.84L18 11v7h-2v-6H8v6H6v-7l6-5.16z"/></svg>
+            </span>
             <div>
-              <div class="works-flag-count" id="works-total">—</div>
+              <div class="works-flag-count" id="works-total">--</div>
               <div class="works-flag-label">Total Works Sanctioned</div>
             </div>
           </div>
-          <div class="works-flag-card" style="border-left:4px solid #C0392B">
-            <span class="works-flag-icon">💸</span>
+          <div class="works-flag-card" style="border-top:3px solid #C0392B">
+            <span class="works-flag-icon" style="color:#C0392B">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+            </span>
             <div>
-              <div class="works-flag-count" id="works-overruns">—</div>
-              <div class="works-flag-label">Cost Overruns (Exp > 110%)</div>
+              <div class="works-flag-count" id="works-overruns">--</div>
+              <div class="works-flag-label">Cost Overruns (Exp &gt; 110%)</div>
             </div>
           </div>
-          <div class="works-flag-card" style="border-left:4px solid var(--gov-saffron)">
-            <span class="works-flag-icon">⚡</span>
+          <div class="works-flag-card" style="border-top:3px solid var(--gov-saffron)">
+            <span class="works-flag-icon" style="color:var(--gov-saffron)">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M7 2v11h3v9l7-12h-4l4-8z"/></svg>
+            </span>
             <div>
-              <div class="works-flag-count" id="works-payment-gaps">—</div>
+              <div class="works-flag-count" id="works-payment-gaps">--</div>
               <div class="works-flag-label">Payment vs Progress Gaps</div>
             </div>
           </div>
-          <div class="works-flag-card" style="border-left:4px solid #7B1FA2">
-            <span class="works-flag-icon">🔍</span>
+          <div class="works-flag-card" style="border-top:3px solid #7B1FA2">
+            <span class="works-flag-icon" style="color:#7B1FA2">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </span>
             <div>
-              <div class="works-flag-count" id="works-unverified">—</div>
+              <div class="works-flag-count" id="works-unverified">--</div>
               <div class="works-flag-label">Unverified High-Value Assets</div>
             </div>
           </div>
@@ -1063,14 +1081,14 @@
       <main class="page-content" id="page-map" role="main" aria-label="Geographic View">
 
         <div class="section-header">
-          <h2><span class="sh-icon">🗺</span>&nbsp;Geographic Intelligence — State-wise View</h2>
+          <h2><span class="sh-icon" style="color:var(--gov-green)"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg></span>&nbsp;Geographic Intelligence: State-wise View</h2>
           <span class="badge badge-info">Click a state cell to view its MPs</span>
         </div>
 
         <div style="display:grid;grid-template-columns:2fr 1fr;gap:var(--sp-5)">
           <div class="gov-panel">
             <div class="panel-header">
-              <div class="panel-title"><span class="panel-title-dot"></span>India — Fund Allocation &amp; Risk Heatmap</div>
+              <div class="panel-title"><span class="panel-title-dot"></span>India: Fund Allocation &amp; Risk Heatmap</div>
               <div style="display:flex;gap:var(--sp-3);align-items:center;font-size:0.72rem;color:var(--txt-muted)">
                 <span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(0,68,170,0.5);border:1px solid rgba(0,68,170,0.6)"></span> Low Risk</span>
                 <span><span style="display:inline-block;width:12px;height:12px;border-radius:2px;background:rgba(212,172,13,0.6);border:1px solid rgba(212,172,13,0.8)"></span> Medium</span>
@@ -1102,9 +1120,9 @@
       <main class="page-content" id="page-report" role="main" aria-label="AI Audit Report">
 
         <div class="section-header">
-          <h2><span class="sh-icon">📋</span>&nbsp;AI Audit Report — MPLADS Fund Monitoring</h2>
+          <h2><span class="sh-icon" style="color:var(--gov-navy)"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1c-1.3 0-2.4.84-2.82 2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg></span>&nbsp;Audit Compliance Report: MPLADS Fund Monitoring</h2>
           <div class="section-header-right">
-            <button class="btn btn-secondary btn-sm" onclick="window.print()">🖨 Print Report</button>
+            <button class="btn btn-secondary btn-sm" onclick="window.print()"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="vertical-align:middle"><path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/></svg> Print Report</button>
             <button class="btn btn-saffron btn-sm" onclick="exportAlertsCSV()">↓ Export CSV</button>
           </div>
         </div>
@@ -1116,7 +1134,7 @@
             <!-- Report Letterhead -->
             <div style="text-align:center;border-bottom:2px solid var(--gov-navy);padding-bottom:var(--sp-6);margin-bottom:var(--sp-6)">
               <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--txt-muted);margin-bottom:var(--sp-3)">Smart India Hackathon 2026 • Problem Statement 26102</div>
-              <div style="font-size:1.2rem;font-weight:700;color:var(--gov-navy)">Sanchi — MPLADS Anomaly &amp; Lifecycle Surveillance</div>
+              <div style="font-size:1.2rem;font-weight:700;color:var(--gov-navy)">Sanchi: MPLADS Scheme Surveillance &amp; Anomaly Audit</div>
               <div style="font-size:0.85rem;color:var(--txt-secondary);margin-top:4px">Student Prototype Decision-Support &amp; Audit Report (MoSPI Scheme Intelligence)</div>
               <div style="height:3px;background:linear-gradient(to right,var(--gov-saffron),var(--gov-navy),var(--gov-green));margin:var(--sp-4) auto;width:200px;border-radius:2px"></div>
               <div style="font-size:1rem;font-weight:700;color:var(--txt-primary)">Statistical Anomaly Detection &amp; Priority Triage Report</div>
@@ -1185,7 +1203,7 @@
             <div class="report-section">
               <h3>Recommendations</h3>
               <ul class="recs-list" id="report-recommendations">
-                <li>✓ Formulating decision-support recommendations…</li>
+                <li>Formulating decision-support recommendations…</li>
               </ul>
             </div>
 
@@ -1203,7 +1221,7 @@
       <footer class="gov-footer" role="contentinfo">
         <div>
           <strong>Smart India Hackathon 2026 Prototype</strong><br/>
-          Problem Statement 26102 — MoSPI MPLADS Fund Intelligence<br/>
+          Problem Statement 26102 | MoSPI MPLADS Fund Intelligence<br/>
           <span style="font-size:0.65rem;color:rgba(255,255,255,0.4)">Non-official academic innovation project for audit and monitoring</span>
         </div>
         <div>
@@ -1226,7 +1244,28 @@
         </div>
       </footer>
 
-    </div><!-- /.main-wrapper -->
+    
+      <!-- ══ OFFICIAL GOVERNMENT COMPLIANCE FOOTER ═══════════════════════ -->
+      <footer class="gov-compliance-footer" role="contentinfo" aria-label="Official Government Footer">
+        <div class="gov-footer-links">
+          <a onclick="openPolicyModal('tos')">Terms &amp; Conditions</a>
+          <span style="opacity:0.3">&bull;</span>
+          <a onclick="openPolicyModal('privacy')">Privacy Policy (DPDP Act)</a>
+          <span style="opacity:0.3">&bull;</span>
+          <a onclick="openPolicyModal('hyperlink')">Hyperlinking Policy</a>
+          <span style="opacity:0.3">&bull;</span>
+          <a onclick="openPolicyModal('security')">STQC &amp; CERT-In Security Guidelines</a>
+          <span style="opacity:0.3">&bull;</span>
+          <a onclick="openPolicyModal('copyright')">Copyright &amp; Disclaimer</a>
+        </div>
+        <div class="gov-footer-disclaimer">
+          <div>This portal is an AI surveillance prototype engineered for the Ministry of Statistics &amp; Programme Implementation (MoSPI), Government of India (SIH 2026 Problem Statement 26102).</div>
+          <div style="margin-top:4px">Portal Designed and Developed adhering to Guidelines for Indian Government Websites (GIGW 3.0) &bull; Hosted securely on National Informatics Centre (NIC) Server Architecture.</div>
+          <div style="margin-top:4px;color:#64748B">&copy; 2026 Ministry of Statistics and Programme Implementation. All Rights Reserved.</div>
+        </div>
+      </footer>
+
+      </div><!-- /.main-wrapper -->
   </div><!-- /.app-body -->
 </div><!-- /#app -->
 
@@ -1234,7 +1273,7 @@
 <div id="auth-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
   <div class="modal-dialog">
     <div class="modal-header">
-      <h3 id="auth-modal-title">🔐 Role-Based Access Control (RBAC) Switcher</h3>
+      <h3 id="auth-modal-title" style="display:flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="vertical-align:middle"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> Role-Based Access Control (RBAC) Switcher</h3>
       <button class="modal-close-btn" onclick="closeAuthModal()" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body">
@@ -1244,22 +1283,22 @@
 
       <div class="role-cards-grid" id="rbac-role-cards">
         <div class="role-card role-ministry" data-email="admin@mospi.gov.in" data-password="Password@123" onclick="selectRoleCard(this, 'admin@mospi.gov.in', 'Password@123')">
-          <div class="role-card-title">🏛️ Ministry Admin</div>
+          <div class="role-card-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 1L2 6v2h20V6L12 1zm-7 9v8h2v-8H5zm4 0v8h2v-8H9zm4 0v8h2v-8h-2zm4 0v8h2v-8h-2zM2 20v2h20v-2H2z"/></svg> Ministry Admin</div>
           <div class="role-card-email">admin@mospi.gov.in</div>
           <div class="role-card-scope">Scope: National (All 773 MPs)</div>
         </div>
         <div class="role-card role-state" data-email="nodal.maharashtra@gov.in" data-password="Password@123" onclick="selectRoleCard(this, 'nodal.maharashtra@gov.in', 'Password@123')">
-          <div class="role-card-title">🏢 State Nodal Officer</div>
+          <div class="role-card-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm2 3v3h3V6H6zm5 0v3h3V6h-3zm5 0v3h3V6h-3zM6 11v3h3v-3H6zm5 0v3h3v-3h-3zm5 0v3h3v-3h-3zM6 16v3h3v-3H6zm5 0v3h3v-3h-3zm5 0v3h3v-3h-3z"/></svg> State Nodal Officer</div>
           <div class="role-card-email">nodal.maharashtra@gov.in</div>
           <div class="role-card-scope">Scope: Maharashtra Only</div>
         </div>
         <div class="role-card role-district" data-email="dm.mumbai@nic.in" data-password="Password@123" onclick="selectRoleCard(this, 'dm.mumbai@nic.in', 'Password@123')">
-          <div class="role-card-title">📍 District Collector</div>
+          <div class="role-card-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> District Collector</div>
           <div class="role-card-email">dm.mumbai@nic.in</div>
           <div class="role-card-scope">Scope: Mumbai City District</div>
         </div>
         <div class="role-card role-mp" data-email="mp.abhishek@sansad.nic.in" data-password="Password@123" onclick="selectRoleCard(this, 'mp.abhishek@sansad.nic.in', 'Password@123')">
-          <div class="role-card-title">👤 Hon'ble MP</div>
+          <div class="role-card-title"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" style="vertical-align:middle"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg> Hon'ble MP</div>
           <div class="role-card-email">mp.abhishek@sansad.nic.in</div>
           <div class="role-card-scope">Scope: Personal Constituency</div>
         </div>
@@ -1289,7 +1328,7 @@
 <div id="investigation-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="iw-modal-title">
   <div class="modal-dialog modal-dialog-large">
     <div class="modal-header">
-      <h3 id="iw-modal-title">🔍 Investigation Workspace — Case Details</h3>
+      <h3 id="iw-modal-title" style="display:flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg> Investigation Workspace: Case Dossier</h3>
       <button class="modal-close-btn" onclick="closeInvestigationModal()" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body" id="investigation-modal-body">
@@ -1305,7 +1344,7 @@
 <div id="datasources-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ds-modal-title">
   <div class="modal-dialog modal-dialog-large">
     <div class="modal-header">
-      <h3 id="ds-modal-title">🛰️ Multi-Source Ingestion Pipelines &amp; Communication Gateways</h3>
+      <h3 id="ds-modal-title" style="display:flex;align-items:center;gap:6px"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg> Multi-Source Ingestion Pipelines &amp; Communication Gateways</h3>
       <button class="modal-close-btn" onclick="closeDataSourcesModal()" aria-label="Close">&times;</button>
     </div>
     <div class="modal-body" style="padding:20px">
@@ -1316,9 +1355,9 @@
       <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:16px;margin-bottom:20px">
         
         <!-- Pipeline 1: PFMS -->
-        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #2563EB;border-radius:6px;padding:14px">
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-top:3px solid #2563EB;border-radius:6px;padding:14px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <span style="font-weight:700;font-size:0.88rem;color:#1E3A8A">💳 PFMS (Public Financial Mgmt)</span>
+            <span style="font-weight:700;font-size:0.88rem;color:#1E3A8A">PFMS (Public Financial Management System)</span>
             <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">CONNECTED</span>
           </div>
           <div style="font-size:0.75rem;color:#475569;line-height:1.5">
@@ -1328,9 +1367,9 @@
         </div>
 
         <!-- Pipeline 2: e-SAKSHI -->
-        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #059669;border-radius:6px;padding:14px">
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-top:3px solid #059669;border-radius:6px;padding:14px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <span style="font-weight:700;font-size:0.88rem;color:#065F46">🏛️ e-SAKSHI Portal (MoSPI)</span>
+            <span style="font-weight:700;font-size:0.88rem;color:#065F46">e-SAKSHI Portal (MoSPI)</span>
             <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">SYNCED</span>
           </div>
           <div style="font-size:0.75rem;color:#475569;line-height:1.5">
@@ -1340,9 +1379,9 @@
         </div>
 
         <!-- Pipeline 3: GeM & Tenders -->
-        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #D97706;border-radius:6px;padding:14px">
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-top:3px solid #D97706;border-radius:6px;padding:14px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <span style="font-weight:700;font-size:0.88rem;color:#92400E">📋 GeM &amp; State e-Tenders</span>
+            <span style="font-weight:700;font-size:0.88rem;color:#92400E">GeM &amp; State e-Tenders</span>
             <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">INDEXED</span>
           </div>
           <div style="font-size:0.75rem;color:#475569;line-height:1.5">
@@ -1352,9 +1391,9 @@
         </div>
 
         <!-- Pipeline 4: NIC SMS Gateway -->
-        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-left:4px solid #7C3AED;border-radius:6px;padding:14px">
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-top:3px solid #7C3AED;border-radius:6px;padding:14px">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
-            <span style="font-weight:700;font-size:0.88rem;color:#5B21B6">📲 NIC SMS &amp; Alert Gateway</span>
+            <span style="font-weight:700;font-size:0.88rem;color:#5B21B6">NIC SMS &amp; Alert Gateway</span>
             <span class="badge" style="background:#DCFCE7;color:#166534;font-size:0.68rem">ONLINE • 99.9% SLA</span>
           </div>
           <div style="font-size:0.75rem;color:#475569;line-height:1.5">
@@ -1372,6 +1411,80 @@
     </div>
     <div class="modal-footer">
       <button class="btn btn-primary" onclick="closeDataSourcesModal()">Close Diagnostics</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ MODAL: TERMS OF SERVICE & STATUTORY PRIVACY POLICIES ════════════ -->
+<div id="policy-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="policy-modal-title">
+  <div class="modal-dialog modal-dialog-large">
+    <div class="modal-header">
+      <h3 id="policy-modal-title" style="display:flex;align-items:center;gap:6px">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+        Statutory Compliance &amp; Legal Policies
+      </h3>
+      <button class="modal-close-btn" onclick="closePolicyModal()" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" style="padding:16px 24px">
+      
+      <div class="policy-tabs-bar">
+        <button class="policy-tab-btn active" data-tab="tos" onclick="switchPolicyTab('tos')">Terms &amp; Conditions</button>
+        <button class="policy-tab-btn" data-tab="privacy" onclick="switchPolicyTab('privacy')">Privacy Policy (DPDP)</button>
+        <button class="policy-tab-btn" data-tab="hyperlink" onclick="switchPolicyTab('hyperlink')">Hyperlinking Policy</button>
+        <button class="policy-tab-btn" data-tab="security" onclick="switchPolicyTab('security')">STQC &amp; Cybersecurity</button>
+        <button class="policy-tab-btn" data-tab="copyright" onclick="switchPolicyTab('copyright')">Copyright &amp; Disclaimer</button>
+      </div>
+
+      <!-- Tab: Terms of Service -->
+      <div class="policy-content-panel" id="policy-tos" style="display:block">
+        <h4>1. Official Terms of Portal Access &amp; Governance</h4>
+        <p>This surveillance portal is operated under the auspices of the Ministry of Statistics &amp; Programme Implementation (MoSPI), Government of India, for automated compliance monitoring and fraud prevention under the Member of Parliament Local Area Development Scheme (MPLADS).</p>
+        <h4>2. Authorised User Obligations &amp; Legal Penalties</h4>
+        <p>Access is restricted strictly to designated personnel including Ministry Administrators, State Nodal Officers, District Collectors/Magistrates, and Members of Parliament. Unauthorised access, tampering, or misuse of scheme surveillance records constitutes an offence punishable under Sections 43, 66, and 72 of the Information Technology Act, 2000, in addition to relevant sections of the Bharatiya Nyaya Sanhita (BNS).</p>
+        <h4>3. Auditability &amp; Session Tracking</h4>
+        <p>All activities on this portal—including query filters, case dossier triage actions, CSV export events, and SMS escalation notices—are timestamped, cryptographically hashed, and recorded in immutable government audit journals.</p>
+      </div>
+
+      <!-- Tab: Privacy Policy -->
+      <div class="policy-content-panel" id="policy-privacy" style="display:none">
+        <h4>1. Compliance with Digital Personal Data Protection (DPDP) Act, 2023</h4>
+        <p>The Ministry of Statistics &amp; Programme Implementation is committed to protecting the privacy of public representatives, implementing agencies, and citizens. Data processed within Sanchi adheres strictly to the principles of purpose limitation, data minimisation, and storage limitation under the DPDP Act, 2023.</p>
+        <h4>2. Collection of Scheme Records &amp; Role Scoping</h4>
+        <p>Information collected comprises official public records relating to MPLADS fund recommendations, administrative sanctions, and PFMS payment disbursements. Jurisdictional filters guarantee that officers only view and triage records within their statutory remit (National, State, or District level).</p>
+        <h4>3. Redaction and Log Retention</h4>
+        <p>Personally Identifiable Information (PII) of beneficiaries or non-gazetted staff is masked or pseudonymised prior to presentation. Audit logs are retained for statutory periods in compliance with the Public Records Act, 1993.</p>
+      </div>
+
+      <!-- Tab: Hyperlinking Policy -->
+      <div class="policy-content-panel" id="policy-hyperlink" style="display:none">
+        <h4>1. Links to External Government Portals</h4>
+        <p>Sanchi provides direct diagnostic and cross-reference links to official Government of India repositories including the Public Financial Management System (PFMS - pfms.nic.in), e-SAKSHI Portal (esakshi.mospi.gov.in), Government e-Marketplace (GeM), and Sansad Portal (sansad.nic.in).</p>
+        <h4>2. External Link Disclaimers</h4>
+        <p>MoSPI is not responsible for the contents or reliability of linked external websites and does not necessarily endorse the views expressed within them. External portals govern their own availability and terms of usage.</p>
+      </div>
+
+      <!-- Tab: STQC & Security -->
+      <div class="policy-content-panel" id="policy-security" style="display:none">
+        <h4>1. STQC Certification Standards</h4>
+        <p>This software architecture is designed in strict conformance with the Guidelines for Indian Government Websites (GIGW 3.0) and Standardisation Testing and Quality Certification (STQC) security baselines.</p>
+        <h4>2. Encryption &amp; Transport Layer Security</h4>
+        <p>All communication channels are protected with TLS 1.3 encryption employing high-grade AES-256 ciphers. API communications between the front-end dashboard and the analytical database are protected with strict Content Security Policy (CSP) headers and cross-site scripting (XSS) mitigations.</p>
+        <h4>3. CERT-In Incident Reporting</h4>
+        <p>Any anomalous access pattern or suspected intrusion attempt is automatically flagged and reported to the Indian Computer Emergency Response Team (CERT-In) under statutory notification mandates.</p>
+      </div>
+
+      <!-- Tab: Copyright & Disclaimer -->
+      <div class="policy-content-panel" id="policy-copyright" style="display:none">
+        <h4>1. Copyright Notice</h4>
+        <p>&copy; 2026 Ministry of Statistics and Programme Implementation (MoSPI), Government of India. The material featured on this portal is subject to Government copyright protection under the Copyright Act, 1957.</p>
+        <h4>2. Academic Prototype Disclaimer</h4>
+        <p>This system was formulated as an advanced student prototype for Smart India Hackathon (SIH) 2026 addressing Problem Statement 26102. Data displayed utilizes verified public parliament datasets harmonized with synthetic transaction ledgers for simulation of multi-tier algorithmic surveillance.</p>
+      </div>
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" onclick="closePolicyModal()">Close Legal Information</button>
     </div>
   </div>
 </div>

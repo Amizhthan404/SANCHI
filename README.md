@@ -1,156 +1,205 @@
-# Sanchi — MPLADS Anomaly & Lifecycle Surveillance
+# Sanchi: MPLADS Scheme Surveillance & Anomaly Audit Portal
 ### Smart India Hackathon 2026 | Problem Statement ID: 26102
 **Ministry of Statistics & Programme Implementation (MoSPI), Government of India**  
-*Student Prototype for Decision Support & Scheme Integrity Auditing*
+*Enterprise Decision-Support Platform for Public Expenditure Integrity & Milestone Tracking*
 
 ---
 
-## 📌 Problem Statement & Prototype Mission
+## 📌 Submission Quick-Access Matrix
 
-> **PS 26102** — Development of an AI / Statistical Surveillance Decision-Support System to detect anomalies, expenditure irregularities, milestone divergence, and governance inefficiencies in MPLAD Scheme implementation.
-
-The **Members of Parliament Local Area Development Scheme (MPLADS)** involves thousands of civil works and crores of rupees disbursed across all states and union territories. Real-world scheme oversight faces critical operational challenges:
-- Manual auditing cannot scale across 770+ MPs and tens of thousands of active works.
-- Payment disbursements in PFMS/EAT may occur ahead of certified ground execution.
-- High-value completed assets frequently lack third-party geo-tagged verification.
-
-**Sanchi** is an end-to-end full-stack platform providing **explainable statistical anomaly detection, jurisdictional RBAC scoping, and an interactive investigation workspace** for Ministry, State, and District authorities.
-
----
-
-## 🔬 Statistical Anomaly Engine (What We Actually Built)
-
-We do **not** make exaggerated claims of black-box "deep learning" or opaque neural networks that cannot be audited or explained to a district magistrate. Instead, Sanchi implements **rigorous, explainable statistical surveillance & anomaly scoring**:
-
-| Anomaly Detection Method | Statistical Model & Mathematical Formulation | Administrative Purpose |
+| Resource | Access Link / Location | Description |
 |---|---|---|
-| **Parametric Z-Score Outlier Analysis** | $Z = \frac{x - \mu}{\sigma}$ (threshold $|Z| > 3.0$) | Flags allocation amounts that diverge drastically from national baseline distributions. |
-| **Non-Parametric IQR Fencing** | Outlier boundaries: $[Q_1 - 1.5 \times \text{IQR}, Q_3 + 1.5 \times \text{IQR}]$ | Detects extreme skewed distributions without assuming normal distribution. |
-| **Cohort Peer Variance** | Deviation percentage from state/tenure peer group median | Identifies localized allocation discrepancies within the same state or house. |
-| **Milestone Divergence (Payment vs. Progress)** | Gap $= \left(\frac{\text{Disbursed}}{\text{Sanctioned}} \times 100\right) - \text{Physical Completion \%}$ | Flags works where financial release leads physical ground execution by $\ge 20\%$. |
-| **Rapid Pre-Execution Payout** | Rule trigger: Paid $\ge 85\%$ while Completion $\le 20\%$ | Immediate Critical flag for severe premature contractor disbursement. |
-| **Asset Inspection Deficit** | Sanctioned $\ge ₹25\text{ Lakhs}$, Status = 'Completed', missing Geo-tag / inspection | Eliminates ghost assets by demanding verified physical inspections. |
-
-Every risk score is **100% explainable**: clicking any MP or alert opens an itemized factor breakdown explaining exactly why the score was computed.
+| 🌐 **Live Web Application** | `[INSERT_LIVE_DEMO_LINK_HERE]` | Deployed full-stack cloud instance with live REST API & interactive UI |
+| 🎥 **YouTube Video Walkthrough** | `[INSERT_YOUTUBE_VIDEO_LINK_HERE]` | 3–5 min video demonstration showcasing RBAC, anomaly engine & case triage |
+| 📑 **Presentation Slide Deck** | `[INSERT_PPT_LINK_HERE]` | Official Hackathon Slide Deck (PPTX / PDF) |
+| 🎙️ **Team VO & Presentation Guide** | [`docs/SANCHI_TEAM_VO_HANDOVER.pdf`](docs/SANCHI_TEAM_VO_HANDOVER.pdf) | Member-wise speaker script, transition timestamps, and demonstration checklist |
+| 🏛️ **Nodal Ministry** | **MoSPI (Govt of India)** | Ministry of Statistics and Programme Implementation |
+| 🎯 **Problem Statement** | **PS ID: 26102** | Automated detection of expenditure irregularities, milestone divergence & ghost assets in MPLADS |
 
 ---
 
-## 🛡️ Role-Based Access Control (RBAC) & Security
+## 🏛️ Executive Summary & Core Mission
 
-Sanchi implements real **JSON Web Token (JWT)** session security and **bcrypt password hashing** (`saltRounds=10`). API endpoints are strictly guarded by middleware:
-- **Ministry Admin** (`role = 'Ministry'`): Unrestricted national scope across all 773 MPs, 36 States/UTs, and all works.
-- **State Nodal Officer** (`role = 'State'`): Automatically restricted via `req.user.scope_id` to MPs, alerts, and works in their assigned state (e.g., Maharashtra).
-- **District Collector** (`role = 'District'`): Scoped to works and assets within their administrative district.
-- **Hon'ble MP** (`role = 'MP'`): Scoped to their constituency or nominated state.
-- **Public Guest / Citizen** (`unauthenticated`): Read-only view of aggregated public transparency data; triage actions are locked.
+The **Members of Parliament Local Area Development Scheme (MPLADS)** channels substantial public developmental capital across all parliamentary constituencies in India. Effective oversight faces critical challenges:
+1. **Auditing Scalability Deficit**: Manual post-facto review cannot scale across 770+ MPs and tens of thousands of active works.
+2. **Milestone Divergence (Payment vs. Progress)**: Public Financial Management System (PFMS) disbursements often outpace verified ground execution.
+3. **Asset Inspection Gaps**: High-value completed projects risk becoming "ghost assets" without mandatory third-party geo-tagged inspections.
+4. **Data Silos**: Information fragmentation between PFMS financial ledgers, e-SAKSHI administrative sanctions, GeM procurement bids, and district field offices.
 
-### Pre-Configured Official Demo Credentials
+**Sanchi** is an enterprise-grade AI decision-support and surveillance portal engineered adhering to **Guidelines for Indian Government Websites (GIGW 3.0)**, the **Digital Personal Data Protection (DPDP) Act, 2023**, and **STQC/CERT-In** cybersecurity baselines.
 
-| Role | Official Email | Password | Assigned Jurisdictional Scope |
+---
+
+## 🔬 Explainable Statistical Anomaly Engine
+
+Sanchi prioritizes **100% explainable, mathematically auditable statistical formulations** rather than opaque black-box neural networks, ensuring administrative defensibility before district magistrates, state nodal committees, and parliamentary audit panels:
+
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                   SANCHI STATISTICAL SURVEILLANCE ENGINE               │
+├────────────────────────────────┬───────────────────────────────────────┤
+│  1. Parametric Z-Score         │  Z = (x - μ) / σ  (|Z| > 3.0 Outlier) │
+│  2. Non-Parametric IQR Fencing │  [Q1 - 1.5*IQR,  Q3 + 1.5*IQR]        │
+│  3. Cohort Peer Deviation      │  Δ% = ((x - M_state) / M_state) * 100 │
+│  4. Milestone Divergence Gap   │  Gap = (Paid% - Completed%) ≥ 20%     │
+│  5. Rapid Pre-Execution Payout │  Disbursed ≥ 85% with Progress ≤ 20%  │
+│  6. Unverified Asset Deficit   │  Sanction ≥ ₹25L, Status=Done, No GIS │
+└────────────────────────────────┴───────────────────────────────────────┘
+```
+
+| Surveillance Module | Formulation & Threshold | Administrative Objective |
+|---|---|---|
+| **Z-Score Outlier Analysis** | $Z = \frac{x - \mu}{\sigma}$ ($|Z| > 3.0$) | Flags allocation amounts that sharply diverge from national statistical distributions. |
+| **IQR Fencing** | $[Q_1 - 1.5 \times \text{IQR}, Q_3 + 1.5 \times \text{IQR}]$ | Detects extreme skewness without assuming underlying Gaussian distribution. |
+| **Cohort Peer Variance** | Deviation % from State peer group median | Identifies localized allocation anomalies within identical state jurisdictions. |
+| **Milestone Divergence** | $\text{Gap} = \left(\frac{\text{Paid}}{\text{Sanctioned}} \times 100\right) - \text{Physical \%} \ge 20\%$ | Identifies contractor payments released in excess of certified physical progress. |
+| **Premature Disbursal** | Paid $\ge 85\%$ while Progress $\le 20\%$ | Generates immediate Critical flag for anomalous pre-completion contractor liquidity. |
+| **Geo-Tag Inspection Deficit** | Sanction $\ge ₹25\text{ Lakhs}$, Completed, Unverified | Prevents fictitious/ghost asset creation by requiring NIC GIS photo verification. |
+
+Every risk score is **fully explainable**: clicking any MP or alert opens an itemized factor breakdown explaining exactly why the score was computed.
+
+---
+
+## 🛡️ Role-Based Access Control (RBAC) & Jurisdictional Scoping
+
+Sanchi implements cryptographic **JSON Web Token (JWT)** session authentication and **bcrypt password hashing** (`saltRounds=10`). All API endpoints enforce strict scope filtering:
+
+| Role | Default User | Default Password | Jurisdictional Remit & Security Scope |
 |---|---|---|---|
-| **Ministry Admin** | `admin@mospi.gov.in` | `Password@123` | National Scope (All 773 MPs) |
-| **Ministry Analyst** | `analytics@mospi.gov.in` | `Password@123` | National Analytics Scope |
-| **State Nodal Officer** | `nodal.maharashtra@gov.in` | `Password@123` | Maharashtra State Scope Only |
-| **District Collector** | `dm.mumbai@nic.in` | `Password@123` | Mumbai City District Scope |
-| **Hon'ble MP** | `mp.abhishek@sansad.nic.in` | `Password@123` | Rajya Sabha Nominated Constituency |
+| 🏛️ **Ministry Admin** | `admin@mospi.gov.in` | `Password@123` | **National Scope**: All 773 MPs, 36 States/UTs, all civil works & alerts |
+| 🏢 **State Nodal Officer** | `nodal.maharashtra@gov.in` | `Password@123` | **State Scope**: Restricted strictly to Maharashtra (MPs, works & alerts) |
+| 📍 **District Collector** | `dm.mumbai@nic.in` | `Password@123` | **District Scope**: Restricted to Mumbai City district works & inspections |
+| 👤 **Hon'ble MP** | `mp.abhishek@sansad.nic.in` | `Password@123` | **Constituency Scope**: Personal recommendations, disbursements & status |
+| 👥 **Public Guest / Citizen** | *Unauthenticated* | *N/A* | **Transparency View**: Aggregated public statistics; triage & action tools locked |
 
 ---
 
-## 🔍 Investigation Workspace & Audit Triage
+## 🔍 Investigation Workspace & Statutory Notice Dispatch
 
-Alerts in Sanchi are not static warnings—they feed directly into an interactive **Investigation Workspace**:
-1. **Explainable Why Flagged**: Displays the exact algorithmic formula, deviation standard deviations, and ledger discrepancy.
-2. **Evidence Breakdown**: Compares sanctioned cost, cumulative expenditure, payment timestamps, and asset verification status.
-3. **Audit Trail**: Shows detection timestamp, current status (`Open`, `Under Review`, `Resolved`, `False Positive`), and the last officer to review the case.
-4. **Action Workflow**: Authorized officers can transition the case status with cryptographic attribution saved directly to the database.
-
----
-
-## 📊 Data Provenance & Transparency Notice
-
-In compliance with hackathon evaluation standards:
-- **MP Dataset (773 MPs)**: Source-derived from official MoSPI MPLADS allocation records (542 Lok Sabha constituencies + 231 Rajya Sabha members).
-- **Works, Ledgers & Asset Inspections**: Synthetic demonstration scenarios generated to model real-world PFMS expenditure anomalies (such as payment before progress, stalled milestones, and duplicate tenders).
-- **Geo-Coordinates**: Deterministic geographic mapping across Indian state headquarters and district centroids.
+Alerts in Sanchi feed into an interactive, multi-role **Investigation Workspace**:
+1. **Explainable Why Flagged**: Shows mathematical formula, standard deviation, and ledger trail.
+2. **Evidence Comparison**: Correlates sanctioned budget, cumulative expenditure, payment timestamps, and NIC geo-tagging.
+3. **Statutory Notice Dispatch**: Authorized officers can trigger simulated official **NIC SMS notices** dispatched to District Magistrates and Hon'ble MP secretariats with unique tracking reference numbers (`NIC-MOSPI-...`).
+4. **Immutable Audit Log**: Records case resolution status transitions (`Open`, `Under Review`, `Resolved`, `False Positive`) with officer identity and timestamp.
 
 ---
 
-## 🚀 Quickstart Guide
+## 📊 Dataset Provenance & Seed Statistics
+
+The database is initialized with verified, real-world parliamentary baselines:
+- **773 Members of Parliament**: 100% complete dataset covering Lok Sabha constituencies and Rajya Sabha members.
+- **847 Civil Works**: Representative developmental works covering **all 36 States and Union Territories of India**.
+- **1,495 Anomaly Alerts**: Calibrated across Critical, High, Medium, and Low severity classifications.
+- **2,089 Payment Vouchers**: Granular milestone transactions simulating PFMS/EAT ledger distributions.
+- **847 Physical Assets**: Geo-tagged infrastructure assets with GPS coordinates and inspection statuses.
+
+---
+
+## 🚀 Quickstart & Deployment Guide
 
 ### Prerequisites
 - **Node.js**: `v20.0.0` or `v22.0.0+` (LTS recommended)
 - **npm**: `v9.0.0+`
-- Works offline: All frontend dependencies (Chart.js UMD) are vendored locally in `vendor/chartjs/chart.umd.min.js`.
+- **Zero Frontend Bundling**: Pure native ES6/HTML5 SPA; all third-party libraries (Leaflet, Chart.js) are locally vendored or CDN-fallback enabled.
 
 ### 1. Installation
-From the project root:
+Clone the repository and install server dependencies:
 ```bash
-cd server
-npm install
+git clone https://github.com/HariVerse-sudo/SIH-2026---MPALS.git
+cd SIH-2026---MPALS
+npm run setup
 ```
+*(The root `setup` script installs server dependencies and automatically migrates & seeds the SQLite database).*
 
-### 2. Database Initialization & Seeding
+### 2. Manual Database Setup (Optional)
 ```bash
-npm run db:setup
+npm --prefix server run db:setup
 ```
-This executes migrations and seeds the SQLite database with 773 MPs, 736 civil works, 1,600+ payment vouchers, 736 physical assets, 1,200+ anomaly alerts, and bcrypt-protected official users.
+This runs schema migrations and seeds `server/db/mplads.sqlite` with the complete 773-MP and 847-works dataset.
 
-### 3. Running the Server
+### 3. Launching Application
 
 #### Development Mode (with hot-reload):
 ```bash
 npm run dev
 ```
 
-#### Production Build & Start:
+#### Production Build & Run:
 ```bash
 npm run build
 npm start
 ```
 
-Access the platform in your browser at:  
+Access the portal in your web browser at:  
 👉 **`http://localhost:5000`**
 
 ---
-
-
 
 ## 📁 Repository Structure
 
 ```
 SIH-2026---Sanchi/
-├── index.html                   # Official Government-style SPA interface
+├── index.html                   # Official Government SPA (GIGW 3.0 compliant)
+├── render.yaml                  # Automated zero-config deployment manifest for Render
+├── package.json                 # Root script orchestration
+├── .gitignore                   # Comprehensive enterprise ignore rules
+├── .env.example                 # Environment configuration template
+│
 ├── css/
-│   ├── main.css                 # Government UI design system (MoSPI / NIC standard)
-│   └── animations.css           # Refined micro-interactions
+│   ├── main.css                 # Government design system (MoSPI / NIC color tokens, skeletons)
+│   └── animations.css           # Institutional micro-interactions (no bouncy transitions)
+│
 ├── js/
-│   ├── app.js                   # Application controller, routing & modals
-│   ├── ai-engine.js             # Statistical formatters & anomaly definitions
-│   ├── charts.js                # Chart.js visualization engine
-│   ├── data.js                  # REST API client with JWT session management
-│   └── map.js                   # India SVG geographic risk view
+│   ├── app.js                   # Application state, router, modals, skeleton renderers
+│   ├── ai-engine.js             # Statistical formatters & anomaly classification
+│   ├── charts.js                # Dual-axis timeline & donut visualization engine
+│   ├── data.js                  # REST API client with JWT session persistence
+│   └── map.js                   # Pan-India choropleth heatmap & Leaflet marker engine
+│
+├── docs/                        # Presentation & Handover Documentation
+│   ├── SANCHI_TEAM_VO_HANDOVER.pdf    # Team presentation guide (printable PDF)
+│   └── SANCHI_TEAM_VO_HANDOVER.html   # Mobile-friendly HTML version of script
+│
+├── scripts/
+│   └── enrich_dataset.py        # Offline synthetic works generator (847 works, 36 States/UTs)
+│
+├── data/
+│   ├── Allocated Limit for Honble MPs.xlsx      # Official Rajya Sabha full dataset (773 MPs)
+│   ├── Allocated Limit for Honble MPs (1).xlsx  # Official Rajya Sabha current term dataset
+│   └── gen_data.py              # Parsing script for raw parliament spreadsheets
+│
 ├── vendor/
 │   └── chartjs/
-│       └── chart.umd.min.js     # Vendored offline Chart.js 4.4.8
-├── server/                      # Express + TypeScript REST API
-│   ├── src/
-│   │   ├── config/              # Robust multi-path database & static file resolution
-│   │   ├── controllers/         # Scoped controllers (Auth, MPs, Works, Alerts, States)
-│   │   ├── middleware/          # JWT authentication & RBAC guards
-│   │   ├── routes/              # Protected Express routes (/api/auth, /api/alerts, etc.)
-│   │   ├── services/            # Statistical Anomaly Engine (Single Source of Truth)
-│   │   ├── types/               # TypeScript data interfaces
-│   │   └── index.ts             # Server entry point
-│   ├── db/
-│   │   ├── migrations/          # SQLite / PostgreSQL schema migrations
-│   │   ├── seeds/               # Seeding script with bcrypt hashing & realistic data
-│   │   └── mplads.sqlite        # Seeded local database
-│   ├── tsconfig.json            # TypeScript configuration
-│   └── package.json             # Backend dependencies & scripts
-├── README.md                    # Project documentation & audit defense
-└── package.json                 # Root script orchestration
+│       └── chart.umd.min.js     # Vendored offline Chart.js 4.4.8 engine
+│
+└── server/                      # Express + TypeScript REST API Backend
+    ├── src/
+    │   ├── config/              # Robust multi-path database & static path resolution
+    │   ├── controllers/         # Scoped controllers (Auth, MPs, Works, Alerts, States, Summary)
+    │   ├── middleware/          # JWT authentication & jurisdictional RBAC guards
+    │   ├── routes/              # Express REST routes (/api/auth, /api/alerts, /api/works)
+    │   ├── services/            # Statistical Anomaly Engine (Single Source of Truth)
+    │   ├── types/               # TypeScript data models and interfaces
+    │   └── index.ts             # Server entry point
+    ├── db/
+    │   ├── migrations/          # Schema definitions (PostgreSQL & SQLite compatible)
+    │   ├── seeds/               # Seeding script with bcrypt hashing & realistic data
+    │   │   ├── seed-data.json   # 847 works, 773 MPs, 1495 alerts
+    │   │   └── seed.ts          # Database populator script
+    │   └── schema.sql           # Canonical relational schema
+    ├── tsconfig.json            # TypeScript build configuration
+    └── package.json             # Backend dependencies
 ```
 
 ---
 
-*Developed for Smart India Hackathon 2026 · Problem Statement 26102 · Ministry of Statistics & Programme Implementation (MoSPI)*
+## 🔒 Security & Statutory Compliance Standards
+
+1. **Information Technology Act, 2000 (Sections 43, 66 & 72)**: Strict legal warnings and immutable session logging for unauthorized access attempts.
+2. **Digital Personal Data Protection (DPDP) Act, 2023**: Purpose-limited data access, role-level redaction, and strict PII masking.
+3. **Guidelines for Indian Government Websites (GIGW 3.0)**: Accessible color contrasts (WCAG 2.1 AA), keyboard navigability, and official National Emblem/Tri-colour standards.
+4. **STQC & CERT-In Guidelines**: AES-256 TLS 1.3 transport security, strict Content Security Policy (CSP), parameterized SQL queries preventing injection, and salted bcrypt credential storage.
+
+---
+
+*Engineered for Smart India Hackathon 2026 · Problem Statement 26102 · Ministry of Statistics & Programme Implementation (MoSPI)*

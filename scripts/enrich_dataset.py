@@ -1,3 +1,9 @@
+"""
+Sanchi - Offline Synthetic Works Generator & Seeder
+Generates representative MPLADS civil works across all 36 Indian States and UTs,
+synthesizing PFMS-style transaction vouchers, milestone divergence, and asset inspections.
+Populates server/db/seeds/seed-data.json for automated migration setup.
+"""
 import json
 import random
 import os
