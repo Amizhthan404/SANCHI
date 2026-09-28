@@ -9,9 +9,9 @@
 
 | Resource | Access Link / Location | Description |
 |---|---|---|
-| 🌐 **Live Web Application** | `[INSERT_LIVE_DEMO_LINK_HERE]` | Deployed full-stack cloud instance with live REST API & interactive UI |
-| 🎥 **YouTube Video Walkthrough** | `[INSERT_YOUTUBE_VIDEO_LINK_HERE]` | 3–5 min video demonstration showcasing RBAC, anomaly engine & case triage |
-| 📑 **Presentation Slide Deck** | `[INSERT_PPT_LINK_HERE]` | Official Hackathon Slide Deck (PPTX / PDF) |
+| 🌐 **Live Web Application** | [sih-2026-mpals-main.onrender.com](https://sih-2026-mpals-main.onrender.com/) | Deployed full-stack cloud instance with live REST API & interactive UI |
+| 🎥 **YouTube Video Walkthrough** | [Watch Demo on YouTube](https://youtu.be/kuiuq0MSW7A?si=QFERS4v-arDcV6sq) | Official project video demonstration showcasing RBAC, anomaly engine & case triage |
+| 📑 **Presentation Slide Deck** | [`docs/SIHFINALPPT.pptx`](docs/SIHFINALPPT.pptx) | Official Hackathon Slide Deck (PPTX format) |
 | 🏛️ **Nodal Ministry** | **MoSPI (Govt of India)** | Ministry of Statistics and Programme Implementation |
 | 🎯 **Problem Statement** | **PS ID: 26102** | Automated detection of expenditure irregularities, milestone divergence & ghost assets in MPLADS |
 
@@ -130,7 +130,8 @@ npm start
 ```
 
 Access the portal in your web browser at:  
-👉 **`http://localhost:5000`**
+👉 **`https://sih-2026-mpals-main.onrender.com/`** (Live Cloud Deployment)  
+👉 **`http://localhost:5000`** (Local Instance)
 
 ---
 
@@ -154,6 +155,9 @@ SIH-2026---Sanchi/
 │   ├── charts.js                # Dual-axis timeline & donut visualization engine
 │   ├── data.js                  # REST API client with JWT session persistence
 │   └── map.js                   # Pan-India choropleth heatmap & Leaflet marker engine
+│
+├── docs/                        # Hackathon Evaluation Documents
+│   └── SIHFINALPPT.pptx         # Official SIH 2026 Slide Deck (PowerPoint presentation)
 │
 ├── scripts/
 │   └── enrich_dataset.py        # Offline synthetic works generator (847 works, 36 States/UTs)
